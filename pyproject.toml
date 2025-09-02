@@ -35,8 +35,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/The-Swarm-Corporation/swarms-sdk"
-Repository = "https://github.com/The-Swarm-Corporation/swarms-sdk"
+Homepage = "https://github.com/The-Swarm-Corporation/swarms-client"
+Repository = "https://github.com/The-Swarm-Corporation/swarms-client"
 
 [project.optional-dependencies]
 aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.8"]
@@ -125,7 +125,7 @@ path = "README.md"
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
 # replace relative links with absolute links
 pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)'
-replacement = '[\1](https://github.com/The-Swarm-Corporation/swarms-sdk/tree/main/\g<2>)'
+replacement = '[\1](https://github.com/The-Swarm-Corporation/swarms-client/tree/main/\g<2>)'
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
