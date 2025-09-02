@@ -13,6 +13,7 @@ from typing import (
     Mapping,
     TypeVar,
     Callable,
+    Iterator,
     Optional,
     Sequence,
 )
@@ -22,6 +23,8 @@ from typing_extensions import (
     Protocol,
     TypeAlias,
     TypedDict,
+    SupportsIndex,
+    overload,
     override,
     runtime_checkable,
 )
@@ -234,3 +237,26 @@ class _GenericAlias(Protocol):
 class HttpxSendArgs(TypedDict, total=False):
     auth: httpx.Auth
     follow_redirects: bool
+
+
+_T_co = TypeVar("_T_co", covariant=True)
+
+
+if TYPE_CHECKING:
+    # This works because str.__contains__ does not accept object (either in typeshed or at runtime)
+    # https://github.com/hauntsaninja/useful_types/blob/5e9710f3875107d068e7679fd7fec9cfab0eff3b/useful_types/__init__.py#L285
+    class SequenceNotStr(Protocol[_T_co]):
+        @overload
+        def __getitem__(self, index: SupportsIndex, /) -> _T_co: ...
+        @overload
+        def __getitem__(self, index: slice, /) -> Sequence[_T_co]: ...
+        def __contains__(self, value: object, /) -> bool: ...
+        def __len__(self) -> int: ...
+        def __iter__(self) -> Iterator[_T_co]: ...
+        def index(self, value: Any, start: int = 0, stop: int = ..., /) -> int: ...
+        def count(self, value: Any, /) -> int: ...
+        def __reversed__(self) -> Iterator[_T_co]: ...
+else:
+    # just point this to a normal `Sequence` at runtime to avoid having to special case
+    # deserializing our custom sequence type
+    SequenceNotStr = Sequence
