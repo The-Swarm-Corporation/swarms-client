@@ -1,13 +1,5 @@
 # Changelog
 
-## 0.12.2 (2025-08-26)
-
-Full Changelog: [v0.12.1...v0.12.2](https://github.com/The-Swarm-Corporation/swarms-client/compare/v0.12.1...v0.12.2)
-
-### Chores
-
-* **internal:** change ci workflow machines ([f79f521](https://github.com/The-Swarm-Corporation/swarms-client/commit/f79f5214bb1efcd1b5e75b5571dcdf99426b44d8))
-
 ## 0.12.1 (2025-08-22)
 
 Full Changelog: [v0.12.0...v0.12.1](https://github.com/The-Swarm-Corporation/swarms-sdk/compare/v0.12.0...v0.12.1)
