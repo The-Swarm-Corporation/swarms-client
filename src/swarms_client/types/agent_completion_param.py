@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import TypedDict
 
+from .._types import SequenceNotStr
 from .agent_spec_param import AgentSpecParam
 
 __all__ = ["AgentCompletionParam"]
@@ -26,7 +27,7 @@ class AgentCompletionParam(TypedDict, total=False):
     representation.
     """
 
-    imgs: Optional[List[str]]
+    imgs: Optional[SequenceNotStr[str]]
     """
     A list of image URLs that may be associated with the agent's task or
     representation.
@@ -35,5 +36,5 @@ class AgentCompletionParam(TypedDict, total=False):
     task: Optional[str]
     """The task to be completed by the agent."""
 
-    tools_enabled: Optional[List[str]]
+    tools_enabled: Optional[SequenceNotStr[str]]
     """A list of tools that the agent should use to complete its task."""
