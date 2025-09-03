@@ -32,8 +32,8 @@ class AgentCompletionParam(TypedDict, total=False):
     representation.
     """
 
-    stream: Optional[bool]
-    """A flag indicating whether the agent should stream its output."""
-
     task: Optional[str]
     """The task to be completed by the agent."""
+
+    tools_enabled: Optional[List[str]]
+    """A list of tools that the agent should use to complete its task."""

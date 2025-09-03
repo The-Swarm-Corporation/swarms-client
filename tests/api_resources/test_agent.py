@@ -37,19 +37,45 @@ class TestAgent:
                 "llm_args": {"foo": "bar"},
                 "max_loops": 0,
                 "max_tokens": 0,
+                "mcp_config": {
+                    "authorization_token": "authorization_token",
+                    "headers": {"foo": "string"},
+                    "timeout": 0,
+                    "tool_configurations": {"foo": "bar"},
+                    "transport": "transport",
+                    "type": "type",
+                    "url": "url",
+                },
+                "mcp_configs": {
+                    "connections": [
+                        {
+                            "authorization_token": "authorization_token",
+                            "headers": {"foo": "string"},
+                            "timeout": 0,
+                            "tool_configurations": {"foo": "bar"},
+                            "transport": "transport",
+                            "type": "type",
+                            "url": "url",
+                        }
+                    ]
+                },
                 "mcp_url": "mcp_url",
                 "model_name": "model_name",
+                "reasoning_effort": "reasoning_effort",
+                "reasoning_enabled": True,
                 "role": "role",
                 "streaming_on": True,
                 "system_prompt": "system_prompt",
                 "temperature": 0,
+                "thinking_tokens": 0,
+                "tool_call_summary": True,
                 "tools_list_dictionary": [{"foo": "bar"}],
             },
             history={"foo": "bar"},
             img="img",
             imgs=["string"],
-            stream=True,
             task="task",
+            tools_enabled=["string"],
         )
         assert_matches_type(AgentRunResponse, agent, path=["response"])
 
@@ -104,19 +130,45 @@ class TestAsyncAgent:
                 "llm_args": {"foo": "bar"},
                 "max_loops": 0,
                 "max_tokens": 0,
+                "mcp_config": {
+                    "authorization_token": "authorization_token",
+                    "headers": {"foo": "string"},
+                    "timeout": 0,
+                    "tool_configurations": {"foo": "bar"},
+                    "transport": "transport",
+                    "type": "type",
+                    "url": "url",
+                },
+                "mcp_configs": {
+                    "connections": [
+                        {
+                            "authorization_token": "authorization_token",
+                            "headers": {"foo": "string"},
+                            "timeout": 0,
+                            "tool_configurations": {"foo": "bar"},
+                            "transport": "transport",
+                            "type": "type",
+                            "url": "url",
+                        }
+                    ]
+                },
                 "mcp_url": "mcp_url",
                 "model_name": "model_name",
+                "reasoning_effort": "reasoning_effort",
+                "reasoning_enabled": True,
                 "role": "role",
                 "streaming_on": True,
                 "system_prompt": "system_prompt",
                 "temperature": 0,
+                "thinking_tokens": 0,
+                "tool_call_summary": True,
                 "tools_list_dictionary": [{"foo": "bar"}],
             },
             history={"foo": "bar"},
             img="img",
             imgs=["string"],
-            stream=True,
             task="task",
+            tools_enabled=["string"],
         )
         assert_matches_type(AgentRunResponse, agent, path=["response"])
 
