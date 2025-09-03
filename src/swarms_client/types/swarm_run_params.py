@@ -75,7 +75,6 @@ class SwarmRunParams(TypedDict, total=False):
         Literal[
             "AgentRearrange",
             "MixtureOfAgents",
-            "SpreadSheetSwarm",
             "SequentialWorkflow",
             "ConcurrentWorkflow",
             "GroupChat",
