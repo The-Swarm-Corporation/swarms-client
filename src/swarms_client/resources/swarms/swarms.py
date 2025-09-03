@@ -121,7 +121,6 @@ class SwarmsResource(SyncAPIResource):
             Literal[
                 "AgentRearrange",
                 "MixtureOfAgents",
-                "SpreadSheetSwarm",
                 "SequentialWorkflow",
                 "ConcurrentWorkflow",
                 "GroupChat",
@@ -147,8 +146,9 @@ class SwarmsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SwarmRunResponse:
-        """
-        Run a swarm with the specified task.
+        """Run a swarm with the specified task.
+
+        Supports streaming when stream=True.
 
         Args:
           agents: A list of agents or specifications that define the agents participating in the
@@ -315,7 +315,6 @@ class AsyncSwarmsResource(AsyncAPIResource):
             Literal[
                 "AgentRearrange",
                 "MixtureOfAgents",
-                "SpreadSheetSwarm",
                 "SequentialWorkflow",
                 "ConcurrentWorkflow",
                 "GroupChat",
@@ -341,8 +340,9 @@ class AsyncSwarmsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SwarmRunResponse:
-        """
-        Run a swarm with the specified task.
+        """Run a swarm with the specified task.
+
+        Supports streaming when stream=True.
 
         Args:
           agents: A list of agents or specifications that define the agents participating in the

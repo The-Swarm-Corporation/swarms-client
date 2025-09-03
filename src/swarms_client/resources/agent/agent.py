@@ -63,8 +63,8 @@ class AgentResource(SyncAPIResource):
         history: Union[Dict[str, object], Iterable[Dict[str, str]], None] | NotGiven = NOT_GIVEN,
         img: Optional[str] | NotGiven = NOT_GIVEN,
         imgs: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        stream: Optional[bool] | NotGiven = NOT_GIVEN,
         task: Optional[str] | NotGiven = NOT_GIVEN,
+        tools_enabled: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -72,8 +72,9 @@ class AgentResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AgentRunResponse:
-        """
-        Run an agent with the specified task.
+        """Run an agent with the specified task.
+
+        Supports streaming when stream=True.
 
         Args:
           agent_config: The configuration of the agent to be completed.
@@ -87,9 +88,9 @@ class AgentResource(SyncAPIResource):
           imgs: A list of image URLs that may be associated with the agent's task or
               representation.
 
-          stream: A flag indicating whether the agent should stream its output.
-
           task: The task to be completed by the agent.
+
+          tools_enabled: A list of tools that the agent should use to complete its task.
 
           extra_headers: Send extra headers
 
@@ -107,8 +108,8 @@ class AgentResource(SyncAPIResource):
                     "history": history,
                     "img": img,
                     "imgs": imgs,
-                    "stream": stream,
                     "task": task,
+                    "tools_enabled": tools_enabled,
                 },
                 agent_run_params.AgentRunParams,
             ),
@@ -150,8 +151,8 @@ class AsyncAgentResource(AsyncAPIResource):
         history: Union[Dict[str, object], Iterable[Dict[str, str]], None] | NotGiven = NOT_GIVEN,
         img: Optional[str] | NotGiven = NOT_GIVEN,
         imgs: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        stream: Optional[bool] | NotGiven = NOT_GIVEN,
         task: Optional[str] | NotGiven = NOT_GIVEN,
+        tools_enabled: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -159,8 +160,9 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AgentRunResponse:
-        """
-        Run an agent with the specified task.
+        """Run an agent with the specified task.
+
+        Supports streaming when stream=True.
 
         Args:
           agent_config: The configuration of the agent to be completed.
@@ -174,9 +176,9 @@ class AsyncAgentResource(AsyncAPIResource):
           imgs: A list of image URLs that may be associated with the agent's task or
               representation.
 
-          stream: A flag indicating whether the agent should stream its output.
-
           task: The task to be completed by the agent.
+
+          tools_enabled: A list of tools that the agent should use to complete its task.
 
           extra_headers: Send extra headers
 
@@ -194,8 +196,8 @@ class AsyncAgentResource(AsyncAPIResource):
                     "history": history,
                     "img": img,
                     "imgs": imgs,
-                    "stream": stream,
                     "task": task,
+                    "tools_enabled": tools_enabled,
                 },
                 agent_run_params.AgentRunParams,
             ),
