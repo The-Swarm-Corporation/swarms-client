@@ -16,7 +16,7 @@ from .batch import (
     AsyncBatchResourceWithStreamingResponse,
 )
 from ...types import swarm_run_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -67,7 +67,7 @@ class SwarmsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SwarmCheckAvailableResponse:
         """Check the available swarm types."""
         return self._get(
@@ -86,7 +86,7 @@ class SwarmsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SwarmGetLogsResponse:
         """
         Get all API request logs for all API keys associated with the user identified by
@@ -104,19 +104,19 @@ class SwarmsResource(SyncAPIResource):
     def run(
         self,
         *,
-        agents: Optional[Iterable[AgentSpecParam]] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        heavy_swarm_loops_per_agent: Optional[int] | NotGiven = NOT_GIVEN,
-        heavy_swarm_question_agent_model_name: Optional[str] | NotGiven = NOT_GIVEN,
-        heavy_swarm_worker_model_name: Optional[str] | NotGiven = NOT_GIVEN,
-        img: Optional[str] | NotGiven = NOT_GIVEN,
-        max_loops: Optional[int] | NotGiven = NOT_GIVEN,
-        messages: Union[Iterable[Dict[str, object]], Dict[str, object], None] | NotGiven = NOT_GIVEN,
-        name: Optional[str] | NotGiven = NOT_GIVEN,
-        rearrange_flow: Optional[str] | NotGiven = NOT_GIVEN,
-        rules: Optional[str] | NotGiven = NOT_GIVEN,
-        service_tier: Optional[str] | NotGiven = NOT_GIVEN,
-        stream: Optional[bool] | NotGiven = NOT_GIVEN,
+        agents: Optional[Iterable[AgentSpecParam]] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        heavy_swarm_loops_per_agent: Optional[int] | Omit = omit,
+        heavy_swarm_question_agent_model_name: Optional[str] | Omit = omit,
+        heavy_swarm_worker_model_name: Optional[str] | Omit = omit,
+        img: Optional[str] | Omit = omit,
+        max_loops: Optional[int] | Omit = omit,
+        messages: Union[Iterable[Dict[str, object]], Dict[str, object], None] | Omit = omit,
+        name: Optional[str] | Omit = omit,
+        rearrange_flow: Optional[str] | Omit = omit,
+        rules: Optional[str] | Omit = omit,
+        service_tier: Optional[str] | Omit = omit,
+        stream: Optional[bool] | Omit = omit,
         swarm_type: Optional[
             Literal[
                 "AgentRearrange",
@@ -136,15 +136,15 @@ class SwarmsResource(SyncAPIResource):
                 "HeavySwarm",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        task: Optional[str] | NotGiven = NOT_GIVEN,
-        tasks: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        task: Optional[str] | Omit = omit,
+        tasks: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SwarmRunResponse:
         """Run a swarm with the specified task.
 
@@ -261,7 +261,7 @@ class AsyncSwarmsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SwarmCheckAvailableResponse:
         """Check the available swarm types."""
         return await self._get(
@@ -280,7 +280,7 @@ class AsyncSwarmsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SwarmGetLogsResponse:
         """
         Get all API request logs for all API keys associated with the user identified by
@@ -298,19 +298,19 @@ class AsyncSwarmsResource(AsyncAPIResource):
     async def run(
         self,
         *,
-        agents: Optional[Iterable[AgentSpecParam]] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        heavy_swarm_loops_per_agent: Optional[int] | NotGiven = NOT_GIVEN,
-        heavy_swarm_question_agent_model_name: Optional[str] | NotGiven = NOT_GIVEN,
-        heavy_swarm_worker_model_name: Optional[str] | NotGiven = NOT_GIVEN,
-        img: Optional[str] | NotGiven = NOT_GIVEN,
-        max_loops: Optional[int] | NotGiven = NOT_GIVEN,
-        messages: Union[Iterable[Dict[str, object]], Dict[str, object], None] | NotGiven = NOT_GIVEN,
-        name: Optional[str] | NotGiven = NOT_GIVEN,
-        rearrange_flow: Optional[str] | NotGiven = NOT_GIVEN,
-        rules: Optional[str] | NotGiven = NOT_GIVEN,
-        service_tier: Optional[str] | NotGiven = NOT_GIVEN,
-        stream: Optional[bool] | NotGiven = NOT_GIVEN,
+        agents: Optional[Iterable[AgentSpecParam]] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        heavy_swarm_loops_per_agent: Optional[int] | Omit = omit,
+        heavy_swarm_question_agent_model_name: Optional[str] | Omit = omit,
+        heavy_swarm_worker_model_name: Optional[str] | Omit = omit,
+        img: Optional[str] | Omit = omit,
+        max_loops: Optional[int] | Omit = omit,
+        messages: Union[Iterable[Dict[str, object]], Dict[str, object], None] | Omit = omit,
+        name: Optional[str] | Omit = omit,
+        rearrange_flow: Optional[str] | Omit = omit,
+        rules: Optional[str] | Omit = omit,
+        service_tier: Optional[str] | Omit = omit,
+        stream: Optional[bool] | Omit = omit,
         swarm_type: Optional[
             Literal[
                 "AgentRearrange",
@@ -330,15 +330,15 @@ class AsyncSwarmsResource(AsyncAPIResource):
                 "HeavySwarm",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        task: Optional[str] | NotGiven = NOT_GIVEN,
-        tasks: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        task: Optional[str] | Omit = omit,
+        tasks: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SwarmRunResponse:
         """Run a swarm with the specified task.
 

@@ -15,7 +15,7 @@ from .batch import (
     AsyncBatchResourceWithStreamingResponse,
 )
 from ...types import agent_run_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -59,18 +59,18 @@ class AgentResource(SyncAPIResource):
     def run(
         self,
         *,
-        agent_config: Optional[AgentSpecParam] | NotGiven = NOT_GIVEN,
-        history: Union[Dict[str, object], Iterable[Dict[str, str]], None] | NotGiven = NOT_GIVEN,
-        img: Optional[str] | NotGiven = NOT_GIVEN,
-        imgs: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        task: Optional[str] | NotGiven = NOT_GIVEN,
-        tools_enabled: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        agent_config: Optional[AgentSpecParam] | Omit = omit,
+        history: Union[Dict[str, object], Iterable[Dict[str, str]], None] | Omit = omit,
+        img: Optional[str] | Omit = omit,
+        imgs: Optional[SequenceNotStr[str]] | Omit = omit,
+        task: Optional[str] | Omit = omit,
+        tools_enabled: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentRunResponse:
         """Run an agent with the specified task.
 
@@ -147,18 +147,18 @@ class AsyncAgentResource(AsyncAPIResource):
     async def run(
         self,
         *,
-        agent_config: Optional[AgentSpecParam] | NotGiven = NOT_GIVEN,
-        history: Union[Dict[str, object], Iterable[Dict[str, str]], None] | NotGiven = NOT_GIVEN,
-        img: Optional[str] | NotGiven = NOT_GIVEN,
-        imgs: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        task: Optional[str] | NotGiven = NOT_GIVEN,
-        tools_enabled: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        agent_config: Optional[AgentSpecParam] | Omit = omit,
+        history: Union[Dict[str, object], Iterable[Dict[str, str]], None] | Omit = omit,
+        img: Optional[str] | Omit = omit,
+        imgs: Optional[SequenceNotStr[str]] | Omit = omit,
+        task: Optional[str] | Omit = omit,
+        tools_enabled: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentRunResponse:
         """Run an agent with the specified task.
 
