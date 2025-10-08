@@ -10,4 +10,4 @@ __all__ = ["SwarmCheckAvailableResponse"]
 class SwarmCheckAvailableResponse(BaseModel):
     success: Optional[bool] = None
 
-    swarm_types: Optional[object] = None
+    swarm_types: None = None
