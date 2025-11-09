@@ -1,4 +1,4 @@
 configured_endpoints: 12
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/swarms%2Fswarms-2a92faba43c8eaac2742facffe7dfa07227ced4457cc1eb1ad70aef26875cd8a.yml
-openapi_spec_hash: 19d7ed70b0fa115d93dd144ca87c2db5
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/swarms%2Fswarms-9f3bf4f408cab3c894be2d0ec313075e6846161f94e41398194198ec1dfca2af.yml
+openapi_spec_hash: 9c17143389848896c749dc49d115a505
 config_hash: e5efbc1540d054395314f0758d1eb846
