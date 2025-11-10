@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -16,7 +16,7 @@ from .batch import (
     AsyncBatchResourceWithStreamingResponse,
 )
 from ...types import swarm_run_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -46,7 +46,7 @@ class SwarmsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/The-Swarm-Corporation/swarms-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/The-Swarm-Corporation/swarms-client#accessing-raw-response-data-eg-headers
         """
         return SwarmsResourceWithRawResponse(self)
 
@@ -55,7 +55,7 @@ class SwarmsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/The-Swarm-Corporation/swarms-sdk#with_streaming_response
+        For more information, see https://www.github.com/The-Swarm-Corporation/swarms-client#with_streaming_response
         """
         return SwarmsResourceWithStreamingResponse(self)
 
@@ -129,7 +129,6 @@ class SwarmsResource(SyncAPIResource):
             Literal[
                 "AgentRearrange",
                 "MixtureOfAgents",
-                "SpreadSheetSwarm",
                 "SequentialWorkflow",
                 "ConcurrentWorkflow",
                 "GroupChat",
@@ -144,7 +143,7 @@ class SwarmsResource(SyncAPIResource):
                 "InteractiveGroupChat",
                 "HeavySwarm",
         task: Optional[str] | NotGiven = NOT_GIVEN,
-        tasks: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        tasks: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -152,8 +151,9 @@ class SwarmsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SwarmRunResponse:
-        """
-        Run a swarm with the specified task.
+        """Run a swarm with the specified task.
+
+        Supports streaming when stream=True.
 
         Args:
           agents: A list of agents or specifications that define the agents participating in the
@@ -248,7 +248,7 @@ class AsyncSwarmsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/The-Swarm-Corporation/swarms-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/The-Swarm-Corporation/swarms-client#accessing-raw-response-data-eg-headers
         """
         return AsyncSwarmsResourceWithRawResponse(self)
 
@@ -257,7 +257,7 @@ class AsyncSwarmsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/The-Swarm-Corporation/swarms-sdk#with_streaming_response
+        For more information, see https://www.github.com/The-Swarm-Corporation/swarms-client#with_streaming_response
         """
         return AsyncSwarmsResourceWithStreamingResponse(self)
 
@@ -331,7 +331,6 @@ class AsyncSwarmsResource(AsyncAPIResource):
             Literal[
                 "AgentRearrange",
                 "MixtureOfAgents",
-                "SpreadSheetSwarm",
                 "SequentialWorkflow",
                 "ConcurrentWorkflow",
                 "GroupChat",
@@ -346,7 +345,7 @@ class AsyncSwarmsResource(AsyncAPIResource):
                 "InteractiveGroupChat",
             ]
         task: Optional[str] | NotGiven = NOT_GIVEN,
-        tasks: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        tasks: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -354,8 +353,9 @@ class AsyncSwarmsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SwarmRunResponse:
-        """
-        Run a swarm with the specified task.
+        """Run a swarm with the specified task.
+
+        Supports streaming when stream=True.
 
         Args:
           agents: A list of agents or specifications that define the agents participating in the

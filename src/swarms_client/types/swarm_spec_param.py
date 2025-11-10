@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, TypedDict
 
+from .._types import SequenceNotStr
 from .agent_spec_param import AgentSpecParam
 
 __all__ = ["SwarmSpecParam"]
@@ -75,7 +76,6 @@ class SwarmSpecParam(TypedDict, total=False):
         Literal[
             "AgentRearrange",
             "MixtureOfAgents",
-            "SpreadSheetSwarm",
             "SequentialWorkflow",
             "ConcurrentWorkflow",
             "GroupChat",
@@ -99,5 +99,5 @@ class SwarmSpecParam(TypedDict, total=False):
     task: Optional[str]
     """The specific task or objective that the swarm is designed to accomplish."""
 
-    tasks: Optional[List[str]]
+    tasks: Optional[SequenceNotStr[str]]
     """A list of tasks that the swarm should complete."""
