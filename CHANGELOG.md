@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.13.0 (2025-11-10)
+
+Full Changelog: [v0.12.1...v0.13.0](https://github.com/The-Swarm-Corporation/swarms-client/compare/v0.12.1...v0.13.0)
+
+### Features
+
+* **api:** api update ([9925393](https://github.com/The-Swarm-Corporation/swarms-client/commit/992539390a3702558e61b71970929b8db856d2bd))
+* **api:** manual updates ([3b42796](https://github.com/The-Swarm-Corporation/swarms-client/commit/3b42796847f9310d68f18c69555d85e1af7becca))
+* improve future compat with pydantic v3 ([781aca7](https://github.com/The-Swarm-Corporation/swarms-client/commit/781aca77867f75124ed3ea158246d9e2cc22e7d9))
+* improve future compat with pydantic v3 ([2defb14](https://github.com/The-Swarm-Corporation/swarms-client/commit/2defb14a724474509a43ec3228e11e9225565b44))
+* **types:** replace List[str] with SequenceNotStr in params ([76cf988](https://github.com/The-Swarm-Corporation/swarms-client/commit/76cf9880a4190d6a0b92f228670a02815cfd6b35))
+
+
+### Chores
+
+* **internal:** move mypy configurations to `pyproject.toml` file ([69387b5](https://github.com/The-Swarm-Corporation/swarms-client/commit/69387b5892c03defcd8c929adb38016a4e3109a4))
+* **internal:** update pydantic dependency ([e48388a](https://github.com/The-Swarm-Corporation/swarms-client/commit/e48388ac48c5fd01cb5b247e689da04609fee1fa))
+* sync repo ([349731c](https://github.com/The-Swarm-Corporation/swarms-client/commit/349731c1142687580cd1371005ec29c097ae41b1))
+* **tests:** simplify `get_platform` test ([165123e](https://github.com/The-Swarm-Corporation/swarms-client/commit/165123ee04a784ad56948fc747d8a6bd345c1713))
+
 ## 0.12.1 (2025-08-22)
 
 Full Changelog: [v0.12.0...v0.12.1](https://github.com/The-Swarm-Corporation/swarms-sdk/compare/v0.12.0...v0.12.1)
