@@ -585,6 +585,18 @@ class TestSwarmsClient:
             client = SwarmsClient(api_key=api_key, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
+        # explicit environment arg requires explicitness
+        with update_env(SWARMS_CLIENT_BASE_URL="http://localhost:5000/from/env"):
+            with pytest.raises(ValueError, match=r"you must pass base_url=None"):
+                SwarmsClient(api_key=api_key, _strict_response_validation=True, environment="production")
+
+            client = SwarmsClient(
+                base_url=None, api_key=api_key, _strict_response_validation=True, environment="production"
+            )
+            assert str(client.base_url).startswith("https://api.swarms.world")
+
+            client.close()
+
     @pytest.mark.parametrize(
         "client",
         [
@@ -1424,6 +1436,18 @@ class TestAsyncSwarmsClient:
         with update_env(SWARMS_CLIENT_BASE_URL="http://localhost:5000/from/env"):
             client = AsyncSwarmsClient(api_key=api_key, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
+
+        # explicit environment arg requires explicitness
+        with update_env(SWARMS_CLIENT_BASE_URL="http://localhost:5000/from/env"):
+            with pytest.raises(ValueError, match=r"you must pass base_url=None"):
+                AsyncSwarmsClient(api_key=api_key, _strict_response_validation=True, environment="production")
+
+            client = AsyncSwarmsClient(
+                base_url=None, api_key=api_key, _strict_response_validation=True, environment="production"
+            )
+            assert str(client.base_url).startswith("https://api.swarms.world")
+
+            await client.close()
 
     @pytest.mark.parametrize(
         "client",

@@ -11,7 +11,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-The REST API documentation can be found on [docs.swarms.world](https://docs.swarms.world/en/latest/). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.swarms.ai](https://docs.swarms.ai). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
@@ -30,6 +30,8 @@ from swarms_client import SwarmsClient
 
 client = SwarmsClient(
     api_key=os.environ.get("SWARMS_API_KEY"),  # This is the default and can be omitted
+    # defaults to "production".
+    environment="sandbox",
 )
 
 response = client.get_root()
@@ -51,6 +53,8 @@ from swarms_client import AsyncSwarmsClient
 
 client = AsyncSwarmsClient(
     api_key=os.environ.get("SWARMS_API_KEY"),  # This is the default and can be omitted
+    # defaults to "production".
+    environment="sandbox",
 )
 
 
