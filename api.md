@@ -166,18 +166,6 @@ Methods:
 
 - <code title="get /v1/tools/available">client.client.tools.<a href="./src/swarms_client/resources/client/tools.py">list_available</a>() -> <a href="./src/swarms_client/types/client/tool_list_available_response.py">ToolListAvailableResponse</a></code>
 
-## Marketplace
-
-Types:
-
-```python
-from swarms_client.types.client import MarketplaceListAgentsResponse
-```
-
-Methods:
-
-- <code title="get /v1/marketplace/agents">client.client.marketplace.<a href="./src/swarms_client/resources/client/marketplace.py">list_agents</a>() -> <a href="./src/swarms_client/types/client/marketplace_list_agents_response.py">MarketplaceListAgentsResponse</a></code>
-
 ## BatchedGridWorkflow
 
 Types:
