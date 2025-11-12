@@ -20,14 +20,6 @@ from .tools import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .marketplace import (
-    MarketplaceResource,
-    AsyncMarketplaceResource,
-    MarketplaceResourceWithRawResponse,
-    AsyncMarketplaceResourceWithRawResponse,
-    MarketplaceResourceWithStreamingResponse,
-    AsyncMarketplaceResourceWithStreamingResponse,
-)
 from .auto_swarm_builder import (
     AutoSwarmBuilderResource,
     AsyncAutoSwarmBuilderResource,
@@ -74,10 +66,6 @@ class ClientResource(SyncAPIResource):
         return ToolsResource(self._client)
 
     @cached_property
-    def marketplace(self) -> MarketplaceResource:
-        return MarketplaceResource(self._client)
-
-    @cached_property
     def batched_grid_workflow(self) -> BatchedGridWorkflowResource:
         return BatchedGridWorkflowResource(self._client)
 
@@ -117,10 +105,6 @@ class AsyncClientResource(AsyncAPIResource):
     @cached_property
     def tools(self) -> AsyncToolsResource:
         return AsyncToolsResource(self._client)
-
-    @cached_property
-    def marketplace(self) -> AsyncMarketplaceResource:
-        return AsyncMarketplaceResource(self._client)
 
     @cached_property
     def batched_grid_workflow(self) -> AsyncBatchedGridWorkflowResource:
@@ -167,10 +151,6 @@ class ClientResourceWithRawResponse:
         return ToolsResourceWithRawResponse(self._client.tools)
 
     @cached_property
-    def marketplace(self) -> MarketplaceResourceWithRawResponse:
-        return MarketplaceResourceWithRawResponse(self._client.marketplace)
-
-    @cached_property
     def batched_grid_workflow(self) -> BatchedGridWorkflowResourceWithRawResponse:
         return BatchedGridWorkflowResourceWithRawResponse(self._client.batched_grid_workflow)
 
@@ -194,10 +174,6 @@ class AsyncClientResourceWithRawResponse:
     @cached_property
     def tools(self) -> AsyncToolsResourceWithRawResponse:
         return AsyncToolsResourceWithRawResponse(self._client.tools)
-
-    @cached_property
-    def marketplace(self) -> AsyncMarketplaceResourceWithRawResponse:
-        return AsyncMarketplaceResourceWithRawResponse(self._client.marketplace)
 
     @cached_property
     def batched_grid_workflow(self) -> AsyncBatchedGridWorkflowResourceWithRawResponse:
@@ -225,10 +201,6 @@ class ClientResourceWithStreamingResponse:
         return ToolsResourceWithStreamingResponse(self._client.tools)
 
     @cached_property
-    def marketplace(self) -> MarketplaceResourceWithStreamingResponse:
-        return MarketplaceResourceWithStreamingResponse(self._client.marketplace)
-
-    @cached_property
     def batched_grid_workflow(self) -> BatchedGridWorkflowResourceWithStreamingResponse:
         return BatchedGridWorkflowResourceWithStreamingResponse(self._client.batched_grid_workflow)
 
@@ -252,10 +224,6 @@ class AsyncClientResourceWithStreamingResponse:
     @cached_property
     def tools(self) -> AsyncToolsResourceWithStreamingResponse:
         return AsyncToolsResourceWithStreamingResponse(self._client.tools)
-
-    @cached_property
-    def marketplace(self) -> AsyncMarketplaceResourceWithStreamingResponse:
-        return AsyncMarketplaceResourceWithStreamingResponse(self._client.marketplace)
 
     @cached_property
     def batched_grid_workflow(self) -> AsyncBatchedGridWorkflowResourceWithStreamingResponse:
