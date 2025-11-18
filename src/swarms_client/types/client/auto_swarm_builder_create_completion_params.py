@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
-from typing_extensions import TypedDict
+from typing import Optional
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["AutoSwarmBuilderCreateCompletionParams"]
 
@@ -12,7 +12,9 @@ class AutoSwarmBuilderCreateCompletionParams(TypedDict, total=False):
     description: Optional[str]
     """A description of the swarm."""
 
-    execution_type: Optional[Iterable[object]]
+    execution_type: Optional[
+        Literal["return-agents", "execute-swarm-router", "return-swarm-router-config", "return-agents-objects"]
+    ]
     """The type of execution to perform."""
 
     max_loops: Optional[int]
