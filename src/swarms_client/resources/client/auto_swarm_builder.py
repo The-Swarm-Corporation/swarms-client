@@ -49,9 +49,7 @@ class AutoSwarmBuilderResource(SyncAPIResource):
         self,
         *,
         description: Optional[str] | Omit = omit,
-        execution_type: Optional[
-            Literal["return-agents", "execute-swarm-router", "return-swarm-router-config", "return-agents-objects"]
-        ]
+        execution_type: Optional[Literal["return-agents", "return-swarm-router-config", "return-agents-objects"]]
         | Omit = omit,
         max_loops: Optional[int] | Omit = omit,
         max_tokens: Optional[int] | Omit = omit,
@@ -159,9 +157,7 @@ class AsyncAutoSwarmBuilderResource(AsyncAPIResource):
         self,
         *,
         description: Optional[str] | Omit = omit,
-        execution_type: Optional[
-            Literal["return-agents", "execute-swarm-router", "return-swarm-router-config", "return-agents-objects"]
-        ]
+        execution_type: Optional[Literal["return-agents", "return-swarm-router-config", "return-agents-objects"]]
         | Omit = omit,
         max_loops: Optional[int] | Omit = omit,
         max_tokens: Optional[int] | Omit = omit,
