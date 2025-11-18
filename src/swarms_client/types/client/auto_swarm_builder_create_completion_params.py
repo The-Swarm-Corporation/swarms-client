@@ -12,9 +12,7 @@ class AutoSwarmBuilderCreateCompletionParams(TypedDict, total=False):
     description: Optional[str]
     """A description of the swarm."""
 
-    execution_type: Optional[
-        Literal["return-agents", "execute-swarm-router", "return-swarm-router-config", "return-agents-objects"]
-    ]
+    execution_type: Optional[Literal["return-agents", "return-swarm-router-config", "return-agents-objects"]]
     """The type of execution to perform."""
 
     max_loops: Optional[int]
