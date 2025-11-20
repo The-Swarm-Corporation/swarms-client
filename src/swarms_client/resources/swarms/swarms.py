@@ -142,6 +142,8 @@ class SwarmsResource(SyncAPIResource):
                 "CouncilAsAJudge",
                 "InteractiveGroupChat",
                 "HeavySwarm",
+            ]
+        ] | NotGiven = NOT_GIVEN,
         task: Optional[str] | NotGiven = NOT_GIVEN,
         tasks: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -343,7 +345,9 @@ class AsyncSwarmsResource(AsyncAPIResource):
                 "DeepResearchSwarm",
                 "CouncilAsAJudge",
                 "InteractiveGroupChat",
+                "HeavySwarm",
             ]
+        ] | NotGiven = NOT_GIVEN,
         task: Optional[str] | NotGiven = NOT_GIVEN,
         tasks: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
