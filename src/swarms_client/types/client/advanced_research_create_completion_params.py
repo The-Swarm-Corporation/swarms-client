@@ -20,6 +20,8 @@ class AdvancedResearchCreateCompletionParams(TypedDict, total=False):
 
 
 class Config(TypedDict, total=False):
+    """The configuration for the advanced research"""
+
     description: Optional[str]
     """Description of the advanced research session"""
 
