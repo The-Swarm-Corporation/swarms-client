@@ -8,6 +8,8 @@ __all__ = ["RateGetLimitsResponse", "Limits", "RateLimits", "RateLimitsDay", "Ra
 
 
 class Limits(BaseModel):
+    """The configured rate limits based on the user's subscription tier."""
+
     maximum_requests_per_day: int
     """The maximum number of requests allowed per day."""
 
@@ -22,6 +24,8 @@ class Limits(BaseModel):
 
 
 class RateLimitsDay(BaseModel):
+    """Rate limit information for the last day."""
+
     count: int
     """The number of requests made in this time window."""
 
@@ -39,6 +43,8 @@ class RateLimitsDay(BaseModel):
 
 
 class RateLimitsHour(BaseModel):
+    """Rate limit information for the last hour."""
+
     count: int
     """The number of requests made in this time window."""
 
@@ -56,6 +62,8 @@ class RateLimitsHour(BaseModel):
 
 
 class RateLimitsMinute(BaseModel):
+    """Rate limit information for the last minute."""
+
     count: int
     """The number of requests made in this time window."""
 
@@ -73,6 +81,8 @@ class RateLimitsMinute(BaseModel):
 
 
 class RateLimits(BaseModel):
+    """Current rate limit usage information for different time windows."""
+
     day: RateLimitsDay
     """Rate limit information for the last day."""
 

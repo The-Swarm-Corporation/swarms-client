@@ -9,6 +9,8 @@ __all__ = ["AgentSpecParam", "McpConfig", "McpConfigs", "McpConfigsConnection"]
 
 
 class McpConfigTyped(TypedDict, total=False):
+    """The MCP connection to use for the agent."""
+
     authorization_token: Optional[str]
     """Authentication token for accessing the MCP server"""
 
@@ -61,6 +63,11 @@ McpConfigsConnection: TypeAlias = Union[McpConfigsConnectionTyped, Dict[str, obj
 
 
 class McpConfigs(TypedDict, total=False):
+    """The MCP connections to use for the agent.
+
+    This is a list of MCP connections. Includes multiple MCP connections.
+    """
+
     connections: Required[Iterable[McpConfigsConnection]]
     """List of MCP connections"""
 
