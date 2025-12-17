@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Dict, Mapping, cast
+from typing import TYPE_CHECKING, Any, Dict, Mapping, cast
 from typing_extensions import Self, Literal, override
 
 import httpx
@@ -23,6 +23,7 @@ from ._types import (
     not_given,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
 from ._response import (
     to_raw_response_wrapper,
@@ -30,7 +31,6 @@ from ._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .resources import health, models, reasoning_agents
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -39,9 +39,15 @@ from ._base_client import (
     AsyncAPIClient,
     make_request_options,
 )
-from .resources.agent import agent
-from .resources.client import client
-from .resources.swarms import swarms
+
+if TYPE_CHECKING:
+    from .resources import agent, client, health, models, swarms, reasoning_agents
+    from .resources.health import HealthResource, AsyncHealthResource
+    from .resources.models import ModelsResource, AsyncModelsResource
+    from .resources.agent.agent import AgentResource, AsyncAgentResource
+    from .resources.client.client import ClientResource, AsyncClientResource
+    from .resources.swarms.swarms import SwarmsResource, AsyncSwarmsResource
+    from .resources.reasoning_agents import ReasoningAgentsResource, AsyncReasoningAgentsResource
 
 __all__ = [
     "ENVIRONMENTS",
@@ -62,15 +68,6 @@ ENVIRONMENTS: Dict[str, str] = {
 
 
 class SwarmsClient(SyncAPIClient):
-    health: health.HealthResource
-    agent: agent.AgentResource
-    models: models.ModelsResource
-    swarms: swarms.SwarmsResource
-    reasoning_agents: reasoning_agents.ReasoningAgentsResource
-    client: client.ClientResource
-    with_raw_response: SwarmsClientWithRawResponse
-    with_streaming_response: SwarmsClientWithStreamedResponse
-
     # client options
     api_key: str | None
 
@@ -145,14 +142,49 @@ class SwarmsClient(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.health = health.HealthResource(self)
-        self.agent = agent.AgentResource(self)
-        self.models = models.ModelsResource(self)
-        self.swarms = swarms.SwarmsResource(self)
-        self.reasoning_agents = reasoning_agents.ReasoningAgentsResource(self)
-        self.client = client.ClientResource(self)
-        self.with_raw_response = SwarmsClientWithRawResponse(self)
-        self.with_streaming_response = SwarmsClientWithStreamedResponse(self)
+    @cached_property
+    def health(self) -> HealthResource:
+        from .resources.health import HealthResource
+
+        return HealthResource(self)
+
+    @cached_property
+    def agent(self) -> AgentResource:
+        from .resources.agent import AgentResource
+
+        return AgentResource(self)
+
+    @cached_property
+    def models(self) -> ModelsResource:
+        from .resources.models import ModelsResource
+
+        return ModelsResource(self)
+
+    @cached_property
+    def swarms(self) -> SwarmsResource:
+        from .resources.swarms import SwarmsResource
+
+        return SwarmsResource(self)
+
+    @cached_property
+    def reasoning_agents(self) -> ReasoningAgentsResource:
+        from .resources.reasoning_agents import ReasoningAgentsResource
+
+        return ReasoningAgentsResource(self)
+
+    @cached_property
+    def client(self) -> ClientResource:
+        from .resources.client import ClientResource
+
+        return ClientResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> SwarmsClientWithRawResponse:
+        return SwarmsClientWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> SwarmsClientWithStreamedResponse:
+        return SwarmsClientWithStreamedResponse(self)
 
     @property
     @override
@@ -294,15 +326,6 @@ class SwarmsClient(SyncAPIClient):
 
 
 class AsyncSwarmsClient(AsyncAPIClient):
-    health: health.AsyncHealthResource
-    agent: agent.AsyncAgentResource
-    models: models.AsyncModelsResource
-    swarms: swarms.AsyncSwarmsResource
-    reasoning_agents: reasoning_agents.AsyncReasoningAgentsResource
-    client: client.AsyncClientResource
-    with_raw_response: AsyncSwarmsClientWithRawResponse
-    with_streaming_response: AsyncSwarmsClientWithStreamedResponse
-
     # client options
     api_key: str | None
 
@@ -377,14 +400,49 @@ class AsyncSwarmsClient(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.health = health.AsyncHealthResource(self)
-        self.agent = agent.AsyncAgentResource(self)
-        self.models = models.AsyncModelsResource(self)
-        self.swarms = swarms.AsyncSwarmsResource(self)
-        self.reasoning_agents = reasoning_agents.AsyncReasoningAgentsResource(self)
-        self.client = client.AsyncClientResource(self)
-        self.with_raw_response = AsyncSwarmsClientWithRawResponse(self)
-        self.with_streaming_response = AsyncSwarmsClientWithStreamedResponse(self)
+    @cached_property
+    def health(self) -> AsyncHealthResource:
+        from .resources.health import AsyncHealthResource
+
+        return AsyncHealthResource(self)
+
+    @cached_property
+    def agent(self) -> AsyncAgentResource:
+        from .resources.agent import AsyncAgentResource
+
+        return AsyncAgentResource(self)
+
+    @cached_property
+    def models(self) -> AsyncModelsResource:
+        from .resources.models import AsyncModelsResource
+
+        return AsyncModelsResource(self)
+
+    @cached_property
+    def swarms(self) -> AsyncSwarmsResource:
+        from .resources.swarms import AsyncSwarmsResource
+
+        return AsyncSwarmsResource(self)
+
+    @cached_property
+    def reasoning_agents(self) -> AsyncReasoningAgentsResource:
+        from .resources.reasoning_agents import AsyncReasoningAgentsResource
+
+        return AsyncReasoningAgentsResource(self)
+
+    @cached_property
+    def client(self) -> AsyncClientResource:
+        from .resources.client import AsyncClientResource
+
+        return AsyncClientResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncSwarmsClientWithRawResponse:
+        return AsyncSwarmsClientWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncSwarmsClientWithStreamedResponse:
+        return AsyncSwarmsClientWithStreamedResponse(self)
 
     @property
     @override
@@ -526,61 +584,191 @@ class AsyncSwarmsClient(AsyncAPIClient):
 
 
 class SwarmsClientWithRawResponse:
+    _client: SwarmsClient
+
     def __init__(self, client: SwarmsClient) -> None:
-        self.health = health.HealthResourceWithRawResponse(client.health)
-        self.agent = agent.AgentResourceWithRawResponse(client.agent)
-        self.models = models.ModelsResourceWithRawResponse(client.models)
-        self.swarms = swarms.SwarmsResourceWithRawResponse(client.swarms)
-        self.reasoning_agents = reasoning_agents.ReasoningAgentsResourceWithRawResponse(client.reasoning_agents)
-        self.client = client.ClientResourceWithRawResponse(client.client)
+        self._client = client
 
         self.get_root = to_raw_response_wrapper(
             client.get_root,
         )
 
+    @cached_property
+    def health(self) -> health.HealthResourceWithRawResponse:
+        from .resources.health import HealthResourceWithRawResponse
+
+        return HealthResourceWithRawResponse(self._client.health)
+
+    @cached_property
+    def agent(self) -> agent.AgentResourceWithRawResponse:
+        from .resources.agent import AgentResourceWithRawResponse
+
+        return AgentResourceWithRawResponse(self._client.agent)
+
+    @cached_property
+    def models(self) -> models.ModelsResourceWithRawResponse:
+        from .resources.models import ModelsResourceWithRawResponse
+
+        return ModelsResourceWithRawResponse(self._client.models)
+
+    @cached_property
+    def swarms(self) -> swarms.SwarmsResourceWithRawResponse:
+        from .resources.swarms import SwarmsResourceWithRawResponse
+
+        return SwarmsResourceWithRawResponse(self._client.swarms)
+
+    @cached_property
+    def reasoning_agents(self) -> reasoning_agents.ReasoningAgentsResourceWithRawResponse:
+        from .resources.reasoning_agents import ReasoningAgentsResourceWithRawResponse
+
+        return ReasoningAgentsResourceWithRawResponse(self._client.reasoning_agents)
+
+    @cached_property
+    def client(self) -> client.ClientResourceWithRawResponse:
+        from .resources.client import ClientResourceWithRawResponse
+
+        return ClientResourceWithRawResponse(self._client.client)
+
 
 class AsyncSwarmsClientWithRawResponse:
+    _client: AsyncSwarmsClient
+
     def __init__(self, client: AsyncSwarmsClient) -> None:
-        self.health = health.AsyncHealthResourceWithRawResponse(client.health)
-        self.agent = agent.AsyncAgentResourceWithRawResponse(client.agent)
-        self.models = models.AsyncModelsResourceWithRawResponse(client.models)
-        self.swarms = swarms.AsyncSwarmsResourceWithRawResponse(client.swarms)
-        self.reasoning_agents = reasoning_agents.AsyncReasoningAgentsResourceWithRawResponse(client.reasoning_agents)
-        self.client = client.AsyncClientResourceWithRawResponse(client.client)
+        self._client = client
 
         self.get_root = async_to_raw_response_wrapper(
             client.get_root,
         )
 
+    @cached_property
+    def health(self) -> health.AsyncHealthResourceWithRawResponse:
+        from .resources.health import AsyncHealthResourceWithRawResponse
+
+        return AsyncHealthResourceWithRawResponse(self._client.health)
+
+    @cached_property
+    def agent(self) -> agent.AsyncAgentResourceWithRawResponse:
+        from .resources.agent import AsyncAgentResourceWithRawResponse
+
+        return AsyncAgentResourceWithRawResponse(self._client.agent)
+
+    @cached_property
+    def models(self) -> models.AsyncModelsResourceWithRawResponse:
+        from .resources.models import AsyncModelsResourceWithRawResponse
+
+        return AsyncModelsResourceWithRawResponse(self._client.models)
+
+    @cached_property
+    def swarms(self) -> swarms.AsyncSwarmsResourceWithRawResponse:
+        from .resources.swarms import AsyncSwarmsResourceWithRawResponse
+
+        return AsyncSwarmsResourceWithRawResponse(self._client.swarms)
+
+    @cached_property
+    def reasoning_agents(self) -> reasoning_agents.AsyncReasoningAgentsResourceWithRawResponse:
+        from .resources.reasoning_agents import AsyncReasoningAgentsResourceWithRawResponse
+
+        return AsyncReasoningAgentsResourceWithRawResponse(self._client.reasoning_agents)
+
+    @cached_property
+    def client(self) -> client.AsyncClientResourceWithRawResponse:
+        from .resources.client import AsyncClientResourceWithRawResponse
+
+        return AsyncClientResourceWithRawResponse(self._client.client)
+
 
 class SwarmsClientWithStreamedResponse:
+    _client: SwarmsClient
+
     def __init__(self, client: SwarmsClient) -> None:
-        self.health = health.HealthResourceWithStreamingResponse(client.health)
-        self.agent = agent.AgentResourceWithStreamingResponse(client.agent)
-        self.models = models.ModelsResourceWithStreamingResponse(client.models)
-        self.swarms = swarms.SwarmsResourceWithStreamingResponse(client.swarms)
-        self.reasoning_agents = reasoning_agents.ReasoningAgentsResourceWithStreamingResponse(client.reasoning_agents)
-        self.client = client.ClientResourceWithStreamingResponse(client.client)
+        self._client = client
 
         self.get_root = to_streamed_response_wrapper(
             client.get_root,
         )
 
+    @cached_property
+    def health(self) -> health.HealthResourceWithStreamingResponse:
+        from .resources.health import HealthResourceWithStreamingResponse
+
+        return HealthResourceWithStreamingResponse(self._client.health)
+
+    @cached_property
+    def agent(self) -> agent.AgentResourceWithStreamingResponse:
+        from .resources.agent import AgentResourceWithStreamingResponse
+
+        return AgentResourceWithStreamingResponse(self._client.agent)
+
+    @cached_property
+    def models(self) -> models.ModelsResourceWithStreamingResponse:
+        from .resources.models import ModelsResourceWithStreamingResponse
+
+        return ModelsResourceWithStreamingResponse(self._client.models)
+
+    @cached_property
+    def swarms(self) -> swarms.SwarmsResourceWithStreamingResponse:
+        from .resources.swarms import SwarmsResourceWithStreamingResponse
+
+        return SwarmsResourceWithStreamingResponse(self._client.swarms)
+
+    @cached_property
+    def reasoning_agents(self) -> reasoning_agents.ReasoningAgentsResourceWithStreamingResponse:
+        from .resources.reasoning_agents import ReasoningAgentsResourceWithStreamingResponse
+
+        return ReasoningAgentsResourceWithStreamingResponse(self._client.reasoning_agents)
+
+    @cached_property
+    def client(self) -> client.ClientResourceWithStreamingResponse:
+        from .resources.client import ClientResourceWithStreamingResponse
+
+        return ClientResourceWithStreamingResponse(self._client.client)
+
 
 class AsyncSwarmsClientWithStreamedResponse:
+    _client: AsyncSwarmsClient
+
     def __init__(self, client: AsyncSwarmsClient) -> None:
-        self.health = health.AsyncHealthResourceWithStreamingResponse(client.health)
-        self.agent = agent.AsyncAgentResourceWithStreamingResponse(client.agent)
-        self.models = models.AsyncModelsResourceWithStreamingResponse(client.models)
-        self.swarms = swarms.AsyncSwarmsResourceWithStreamingResponse(client.swarms)
-        self.reasoning_agents = reasoning_agents.AsyncReasoningAgentsResourceWithStreamingResponse(
-            client.reasoning_agents
-        )
-        self.client = client.AsyncClientResourceWithStreamingResponse(client.client)
+        self._client = client
 
         self.get_root = async_to_streamed_response_wrapper(
             client.get_root,
         )
+
+    @cached_property
+    def health(self) -> health.AsyncHealthResourceWithStreamingResponse:
+        from .resources.health import AsyncHealthResourceWithStreamingResponse
+
+        return AsyncHealthResourceWithStreamingResponse(self._client.health)
+
+    @cached_property
+    def agent(self) -> agent.AsyncAgentResourceWithStreamingResponse:
+        from .resources.agent import AsyncAgentResourceWithStreamingResponse
+
+        return AsyncAgentResourceWithStreamingResponse(self._client.agent)
+
+    @cached_property
+    def models(self) -> models.AsyncModelsResourceWithStreamingResponse:
+        from .resources.models import AsyncModelsResourceWithStreamingResponse
+
+        return AsyncModelsResourceWithStreamingResponse(self._client.models)
+
+    @cached_property
+    def swarms(self) -> swarms.AsyncSwarmsResourceWithStreamingResponse:
+        from .resources.swarms import AsyncSwarmsResourceWithStreamingResponse
+
+        return AsyncSwarmsResourceWithStreamingResponse(self._client.swarms)
+
+    @cached_property
+    def reasoning_agents(self) -> reasoning_agents.AsyncReasoningAgentsResourceWithStreamingResponse:
+        from .resources.reasoning_agents import AsyncReasoningAgentsResourceWithStreamingResponse
+
+        return AsyncReasoningAgentsResourceWithStreamingResponse(self._client.reasoning_agents)
+
+    @cached_property
+    def client(self) -> client.AsyncClientResourceWithStreamingResponse:
+        from .resources.client import AsyncClientResourceWithStreamingResponse
+
+        return AsyncClientResourceWithStreamingResponse(self._client.client)
 
 
 Client = SwarmsClient
