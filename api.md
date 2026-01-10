@@ -172,6 +172,18 @@ Methods:
 
 - <code title="get /v1/tools/available">client.client.tools.<a href="./src/swarms_client/resources/client/tools.py">list_available</a>() -> <a href="./src/swarms_client/types/client/tool_list_available_response.py">ToolListAvailableResponse</a></code>
 
+## Marketplace
+
+Types:
+
+```python
+from swarms_client.types.client import MarketplaceCreateAgentResponse
+```
+
+Methods:
+
+- <code title="post /v1/marketplace/agents">client.client.marketplace.<a href="./src/swarms_client/resources/client/marketplace.py">create_agent</a>(\*\*<a href="src/swarms_client/types/client/marketplace_create_agent_params.py">params</a>) -> <a href="./src/swarms_client/types/client/marketplace_create_agent_response.py">MarketplaceCreateAgentResponse</a></code>
+
 ## BatchedGridWorkflow
 
 Types:
@@ -183,3 +195,15 @@ from swarms_client.types.client import BatchedGridWorkflowCompleteWorkflowRespon
 Methods:
 
 - <code title="post /v1/batched-grid-workflow/completions">client.client.batched_grid_workflow.<a href="./src/swarms_client/resources/client/batched_grid_workflow.py">complete_workflow</a>(\*\*<a href="src/swarms_client/types/client/batched_grid_workflow_complete_workflow_params.py">params</a>) -> <a href="./src/swarms_client/types/client/batched_grid_workflow_complete_workflow_response.py">BatchedGridWorkflowCompleteWorkflowResponse</a></code>
+
+## GraphWorkflow
+
+Types:
+
+```python
+from swarms_client.types.client import GraphWorkflowExecuteWorkflowResponse
+```
+
+Methods:
+
+- <code title="post /v1/graph-workflow/completions">client.client.graph_workflow.<a href="./src/swarms_client/resources/client/graph_workflow.py">execute_workflow</a>(\*\*<a href="src/swarms_client/types/client/graph_workflow_execute_workflow_params.py">params</a>) -> <a href="./src/swarms_client/types/client/graph_workflow_execute_workflow_response.py">GraphWorkflowExecuteWorkflowResponse</a></code>
