@@ -21,7 +21,13 @@ Methods:
 Types:
 
 ```python
-from swarms_client.types import AgentCompletion, AgentSpec, AgentListResponse, AgentRunResponse
+from swarms_client.types import (
+    AgentCompletion,
+    AgentSpec,
+    McpConnection,
+    AgentListResponse,
+    AgentRunResponse,
+)
 ```
 
 Methods:
@@ -107,7 +113,7 @@ Methods:
 Types:
 
 ```python
-from swarms_client.types.client import RateGetLimitsResponse
+from swarms_client.types.client import RateLimitWindow, RateGetLimitsResponse
 ```
 
 Methods:

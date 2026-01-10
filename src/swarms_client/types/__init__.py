@@ -9,6 +9,7 @@ from .swarm_spec_param import SwarmSpecParam as SwarmSpecParam
 from .agent_run_response import AgentRunResponse as AgentRunResponse
 from .swarm_run_response import SwarmRunResponse as SwarmRunResponse
 from .agent_list_response import AgentListResponse as AgentListResponse
+from .mcp_connection_param import McpConnectionParam as McpConnectionParam
 from .health_check_response import HealthCheckResponse as HealthCheckResponse
 from .agent_completion_param import AgentCompletionParam as AgentCompletionParam
 from .swarm_get_logs_response import SwarmGetLogsResponse as SwarmGetLogsResponse

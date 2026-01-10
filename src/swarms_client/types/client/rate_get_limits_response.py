@@ -3,8 +3,9 @@
 from typing import Optional
 
 from ..._models import BaseModel
+from .rate_limit_window import RateLimitWindow
 
-__all__ = ["RateGetLimitsResponse", "Limits", "RateLimits", "RateLimitsDay", "RateLimitsHour", "RateLimitsMinute"]
+__all__ = ["RateGetLimitsResponse", "Limits", "RateLimits"]
 
 
 class Limits(BaseModel):
@@ -23,73 +24,16 @@ class Limits(BaseModel):
     """The maximum number of tokens allowed per agent."""
 
 
-class RateLimitsDay(BaseModel):
-    """Rate limit information for the last day."""
-
-    count: int
-    """The number of requests made in this time window."""
-
-    exceeded: bool
-    """Whether the rate limit has been exceeded for this time window."""
-
-    limit: int
-    """The maximum number of requests allowed in this time window."""
-
-    remaining: int
-    """The number of requests remaining before hitting the limit."""
-
-    reset_time: str
-    """ISO timestamp when the rate limit will reset."""
-
-
-class RateLimitsHour(BaseModel):
-    """Rate limit information for the last hour."""
-
-    count: int
-    """The number of requests made in this time window."""
-
-    exceeded: bool
-    """Whether the rate limit has been exceeded for this time window."""
-
-    limit: int
-    """The maximum number of requests allowed in this time window."""
-
-    remaining: int
-    """The number of requests remaining before hitting the limit."""
-
-    reset_time: str
-    """ISO timestamp when the rate limit will reset."""
-
-
-class RateLimitsMinute(BaseModel):
-    """Rate limit information for the last minute."""
-
-    count: int
-    """The number of requests made in this time window."""
-
-    exceeded: bool
-    """Whether the rate limit has been exceeded for this time window."""
-
-    limit: int
-    """The maximum number of requests allowed in this time window."""
-
-    remaining: int
-    """The number of requests remaining before hitting the limit."""
-
-    reset_time: str
-    """ISO timestamp when the rate limit will reset."""
-
-
 class RateLimits(BaseModel):
     """Current rate limit usage information for different time windows."""
 
-    day: RateLimitsDay
+    day: RateLimitWindow
     """Rate limit information for the last day."""
 
-    hour: RateLimitsHour
+    hour: RateLimitWindow
     """Rate limit information for the last hour."""
 
-    minute: RateLimitsMinute
+    minute: RateLimitWindow
     """Rate limit information for the last minute."""
 
 

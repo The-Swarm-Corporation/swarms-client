@@ -2,64 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Iterable, Optional
-from typing_extensions import Required, TypeAlias, TypedDict
+from typing import Dict, Iterable, Optional
+from typing_extensions import Required, TypedDict
 
-__all__ = ["AgentSpecParam", "McpConfig", "McpConfigs", "McpConfigsConnection"]
+from .mcp_connection_param import McpConnectionParam
 
-
-class McpConfigTyped(TypedDict, total=False):
-    """The MCP connection to use for the agent."""
-
-    authorization_token: Optional[str]
-    """Authentication token for accessing the MCP server"""
-
-    headers: Optional[Dict[str, str]]
-    """Headers to send to the MCP server"""
-
-    timeout: Optional[int]
-    """Timeout for the MCP server"""
-
-    tool_configurations: Optional[Dict[str, object]]
-    """Dictionary containing configuration settings for MCP tools"""
-
-    transport: Optional[str]
-    """The transport protocol to use for the MCP server"""
-
-    type: Optional[str]
-    """The type of connection, defaults to 'mcp'"""
-
-    url: Optional[str]
-    """The URL endpoint for the MCP server"""
-
-
-McpConfig: TypeAlias = Union[McpConfigTyped, Dict[str, object]]
-
-
-class McpConfigsConnectionTyped(TypedDict, total=False):
-    authorization_token: Optional[str]
-    """Authentication token for accessing the MCP server"""
-
-    headers: Optional[Dict[str, str]]
-    """Headers to send to the MCP server"""
-
-    timeout: Optional[int]
-    """Timeout for the MCP server"""
-
-    tool_configurations: Optional[Dict[str, object]]
-    """Dictionary containing configuration settings for MCP tools"""
-
-    transport: Optional[str]
-    """The transport protocol to use for the MCP server"""
-
-    type: Optional[str]
-    """The type of connection, defaults to 'mcp'"""
-
-    url: Optional[str]
-    """The URL endpoint for the MCP server"""
-
-
-McpConfigsConnection: TypeAlias = Union[McpConfigsConnectionTyped, Dict[str, object]]
+__all__ = ["AgentSpecParam", "McpConfigs"]
 
 
 class McpConfigs(TypedDict, total=False):
@@ -68,7 +16,7 @@ class McpConfigs(TypedDict, total=False):
     This is a list of MCP connections. Includes multiple MCP connections.
     """
 
-    connections: Required[Iterable[McpConfigsConnection]]
+    connections: Required[Iterable[McpConnectionParam]]
     """List of MCP connections"""
 
 
@@ -115,7 +63,7 @@ class AgentSpecParam(TypedDict, total=False):
     responses, limiting output length.
     """
 
-    mcp_config: Optional[McpConfig]
+    mcp_config: Optional[McpConnectionParam]
     """The MCP connection to use for the agent."""
 
     mcp_configs: Optional[McpConfigs]
