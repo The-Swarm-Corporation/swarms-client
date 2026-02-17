@@ -39,8 +39,6 @@ from swarms_client import SwarmsClient
 
 client = SwarmsClient(
     api_key=os.environ.get("SWARMS_API_KEY"),  # This is the default and can be omitted
-    # defaults to "production".
-    environment="sandbox",
 )
 
 response = client.get_root()
@@ -62,8 +60,6 @@ from swarms_client import AsyncSwarmsClient
 
 client = AsyncSwarmsClient(
     api_key=os.environ.get("SWARMS_API_KEY"),  # This is the default and can be omitted
-    # defaults to "production".
-    environment="sandbox",
 )
 
 
