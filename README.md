@@ -5,6 +5,13 @@
 
 The Swarms Client Python library provides convenient access to the Swarms Client REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
+and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
+
+It is generated with [Stainless](https://www.stainless.com/).
+
+## Documentation
+
+The REST API documentation can be found on [docs.swarms.ai](https://docs.swarms.ai). The full API of this library can be found in [api.md](api.md).
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx). The full comprehensive documentation can be found on [docs.swarms.ai](https://docs.swarms.ai) 
 and there is also simple documentation available in the [api.md](api.md) in this repository.
 
@@ -116,6 +123,8 @@ from swarms_client import SwarmsClient
 
 client = SwarmsClient(
     api_key=os.environ.get("SWARMS_API_KEY"),  # This is the default and can be omitted
+    # defaults to "production".
+    environment="sandbox",
 )
 
 response = client.get_root()
@@ -137,6 +146,8 @@ from swarms_client import AsyncSwarmsClient
 
 client = AsyncSwarmsClient(
     api_key=os.environ.get("SWARMS_API_KEY"),  # This is the default and can be omitted
+    # defaults to "production".
+    environment="sandbox",
 )
 
 
