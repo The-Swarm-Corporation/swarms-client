@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.14.0 (2026-02-17)
+
+Full Changelog: [v0.13.0...v0.14.0](https://github.com/The-Swarm-Corporation/swarms-client/compare/v0.13.0...v0.14.0)
+
+### Features
+
+* **api:** api update ([b28dbc3](https://github.com/The-Swarm-Corporation/swarms-client/commit/b28dbc33a318d2abeb9127053d90c48d0212394e))
+* **api:** api update ([dc545b9](https://github.com/The-Swarm-Corporation/swarms-client/commit/dc545b90008698b7a51f5d098b1df70b2c59de12))
+* **api:** api update ([12ed8c9](https://github.com/The-Swarm-Corporation/swarms-client/commit/12ed8c97db4760b50654c2054f75fcbd0bd4d770))
+* **api:** manual updates ([0cdd2a6](https://github.com/The-Swarm-Corporation/swarms-client/commit/0cdd2a6769e256c3cd6ab998b89f433c6d9c663b))
+* **api:** manual updates to stainless config ([bec7eb9](https://github.com/The-Swarm-Corporation/swarms-client/commit/bec7eb9bb571eec24ce6fbf9bee702e4e9ab2dbd))
+
+
+### Bug Fixes
+
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([4e16aa8](https://github.com/The-Swarm-Corporation/swarms-client/commit/4e16aa8ad2635e7e89a27ff3713b66c0cf2bc6a5))
+
+
+### Chores
+
+* **internal:** grammar fix (it's -&gt; its) ([a7236bf](https://github.com/The-Swarm-Corporation/swarms-client/commit/a7236bff1148dceb0805ed48f7652ab8df710e87))
+
 ## 0.13.0 (2025-11-10)
 
 Full Changelog: [v0.12.1...v0.13.0](https://github.com/The-Swarm-Corporation/swarms-client/compare/v0.12.1...v0.13.0)
