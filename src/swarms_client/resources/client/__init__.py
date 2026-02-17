@@ -8,6 +8,14 @@ from .rate import (
     RateResourceWithStreamingResponse,
     AsyncRateResourceWithStreamingResponse,
 )
+from .tools import (
+    ToolsResource,
+    AsyncToolsResource,
+    ToolsResourceWithRawResponse,
+    AsyncToolsResourceWithRawResponse,
+    ToolsResourceWithStreamingResponse,
+    AsyncToolsResourceWithStreamingResponse,
+)
 from .client import (
     ClientResource,
     AsyncClientResource,
@@ -15,6 +23,30 @@ from .client import (
     AsyncClientResourceWithRawResponse,
     ClientResourceWithStreamingResponse,
     AsyncClientResourceWithStreamingResponse,
+)
+from .advanced_research import (
+    AdvancedResearchResource,
+    AsyncAdvancedResearchResource,
+    AdvancedResearchResourceWithRawResponse,
+    AsyncAdvancedResearchResourceWithRawResponse,
+    AdvancedResearchResourceWithStreamingResponse,
+    AsyncAdvancedResearchResourceWithStreamingResponse,
+)
+from .auto_swarm_builder import (
+    AutoSwarmBuilderResource,
+    AsyncAutoSwarmBuilderResource,
+    AutoSwarmBuilderResourceWithRawResponse,
+    AsyncAutoSwarmBuilderResourceWithRawResponse,
+    AutoSwarmBuilderResourceWithStreamingResponse,
+    AsyncAutoSwarmBuilderResourceWithStreamingResponse,
+)
+from .batched_grid_workflow import (
+    BatchedGridWorkflowResource,
+    AsyncBatchedGridWorkflowResource,
+    BatchedGridWorkflowResourceWithRawResponse,
+    AsyncBatchedGridWorkflowResourceWithRawResponse,
+    BatchedGridWorkflowResourceWithStreamingResponse,
+    AsyncBatchedGridWorkflowResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -24,6 +56,30 @@ __all__ = [
     "AsyncRateResourceWithRawResponse",
     "RateResourceWithStreamingResponse",
     "AsyncRateResourceWithStreamingResponse",
+    "AutoSwarmBuilderResource",
+    "AsyncAutoSwarmBuilderResource",
+    "AutoSwarmBuilderResourceWithRawResponse",
+    "AsyncAutoSwarmBuilderResourceWithRawResponse",
+    "AutoSwarmBuilderResourceWithStreamingResponse",
+    "AsyncAutoSwarmBuilderResourceWithStreamingResponse",
+    "AdvancedResearchResource",
+    "AsyncAdvancedResearchResource",
+    "AdvancedResearchResourceWithRawResponse",
+    "AsyncAdvancedResearchResourceWithRawResponse",
+    "AdvancedResearchResourceWithStreamingResponse",
+    "AsyncAdvancedResearchResourceWithStreamingResponse",
+    "ToolsResource",
+    "AsyncToolsResource",
+    "ToolsResourceWithRawResponse",
+    "AsyncToolsResourceWithRawResponse",
+    "ToolsResourceWithStreamingResponse",
+    "AsyncToolsResourceWithStreamingResponse",
+    "BatchedGridWorkflowResource",
+    "AsyncBatchedGridWorkflowResource",
+    "BatchedGridWorkflowResourceWithRawResponse",
+    "AsyncBatchedGridWorkflowResourceWithRawResponse",
+    "BatchedGridWorkflowResourceWithStreamingResponse",
+    "AsyncBatchedGridWorkflowResourceWithStreamingResponse",
     "ClientResource",
     "AsyncClientResource",
     "ClientResourceWithRawResponse",

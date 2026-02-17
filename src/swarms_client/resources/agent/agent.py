@@ -15,7 +15,7 @@ from .batch import (
     AsyncBatchResourceWithStreamingResponse,
 )
 from ...types import agent_run_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -28,6 +28,7 @@ from ..._response import (
 from ..._base_client import make_request_options
 from ...types.agent_spec_param import AgentSpecParam
 from ...types.agent_run_response import AgentRunResponse
+from ...types.agent_list_response import AgentListResponse
 
 __all__ = ["AgentResource", "AsyncAgentResource"]
 
@@ -56,6 +57,28 @@ class AgentResource(SyncAPIResource):
         """
         return AgentResourceWithStreamingResponse(self)
 
+    def list(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AgentListResponse:
+        """
+        Get all unique agent configurations that the user has created or used, without
+        task details. Allows users to reuse agent configs with new tasks.
+        """
+        return self._get(
+            "/v1/agents/list",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AgentListResponse,
+        )
+
     def run(
         self,
         *,
@@ -72,7 +95,7 @@ class AgentResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentRunResponse:
         """Run an agent with the specified task.
 
@@ -149,6 +172,28 @@ class AsyncAgentResource(AsyncAPIResource):
         """
         return AsyncAgentResourceWithStreamingResponse(self)
 
+    async def list(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AgentListResponse:
+        """
+        Get all unique agent configurations that the user has created or used, without
+        task details. Allows users to reuse agent configs with new tasks.
+        """
+        return await self._get(
+            "/v1/agents/list",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AgentListResponse,
+        )
+
     async def run(
         self,
         *,
@@ -165,7 +210,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentRunResponse:
         """Run an agent with the specified task.
 
@@ -222,6 +267,9 @@ class AgentResourceWithRawResponse:
     def __init__(self, agent: AgentResource) -> None:
         self._agent = agent
 
+        self.list = to_raw_response_wrapper(
+            agent.list,
+        )
         self.run = to_raw_response_wrapper(
             agent.run,
         )
@@ -235,6 +283,9 @@ class AsyncAgentResourceWithRawResponse:
     def __init__(self, agent: AsyncAgentResource) -> None:
         self._agent = agent
 
+        self.list = async_to_raw_response_wrapper(
+            agent.list,
+        )
         self.run = async_to_raw_response_wrapper(
             agent.run,
         )
@@ -248,6 +299,9 @@ class AgentResourceWithStreamingResponse:
     def __init__(self, agent: AgentResource) -> None:
         self._agent = agent
 
+        self.list = to_streamed_response_wrapper(
+            agent.list,
+        )
         self.run = to_streamed_response_wrapper(
             agent.run,
         )
@@ -261,6 +315,9 @@ class AsyncAgentResourceWithStreamingResponse:
     def __init__(self, agent: AsyncAgentResource) -> None:
         self._agent = agent
 
+        self.list = async_to_streamed_response_wrapper(
+            agent.list,
+        )
         self.run = async_to_streamed_response_wrapper(
             agent.run,
         )

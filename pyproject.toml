@@ -1,6 +1,6 @@
 [project]
 name = "swarms-client"
-version = "0.13.0"
+version = "0.14.0"
 description = "The official Python library for the swarms-client API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -15,11 +15,10 @@ dependencies = [
   "distro>=1.7.0, <2",
   "sniffio",
 ]
-requires-python = ">= 3.8"
+requires-python = ">= 3.9"
 classifiers = [
   "Typing :: Typed",
   "Intended Audience :: Developers",
-  "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
@@ -39,7 +38,7 @@ Homepage = "https://github.com/The-Swarm-Corporation/swarms-client"
 Repository = "https://github.com/The-Swarm-Corporation/swarms-client"
 
 [project.optional-dependencies]
-aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.8"]
+aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.9"]
 
 [tool.rye]
 managed = true
@@ -141,7 +140,7 @@ filterwarnings = [
 # there are a couple of flags that are still disabled by
 # default in strict mode as they are experimental and niche.
 typeCheckingMode = "strict"
-pythonVersion = "3.8"
+pythonVersion = "3.9"
 
 exclude = [
     "_dev",
@@ -224,6 +223,8 @@ select = [
   "B",
   # remove unused imports
   "F401",
+  # check for missing future annotations
+  "FA102",
   # bare except statements
   "E722",
   # unused arguments
@@ -245,6 +246,8 @@ unfixable = [
   "T201",
   "T203",
 ]
+
+extend-safe-fixes = ["FA102"]
 
 [tool.ruff.lint.flake8-tidy-imports.banned-api]
 "functools.lru_cache".msg = "This function does not retain type information for the wrapped function's arguments; The `lru_cache` function from `_utils` should be used instead"

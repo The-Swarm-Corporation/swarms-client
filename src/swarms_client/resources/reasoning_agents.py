@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import reasoning_agent_create_completion_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,13 +48,13 @@ class ReasoningAgentsResource(SyncAPIResource):
     def create_completion(
         self,
         *,
-        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        max_loops: Optional[int] | NotGiven = NOT_GIVEN,
-        memory_capacity: Optional[int] | NotGiven = NOT_GIVEN,
-        model_name: Optional[str] | NotGiven = NOT_GIVEN,
-        num_knowledge_items: Optional[int] | NotGiven = NOT_GIVEN,
-        num_samples: Optional[int] | NotGiven = NOT_GIVEN,
+        agent_name: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        max_loops: Optional[int] | Omit = omit,
+        memory_capacity: Optional[int] | Omit = omit,
+        model_name: Optional[str] | Omit = omit,
+        num_knowledge_items: Optional[int] | Omit = omit,
+        num_samples: Optional[int] | Omit = omit,
         output_type: Optional[
             Literal[
                 "list",
@@ -75,7 +75,7 @@ class ReasoningAgentsResource(SyncAPIResource):
                 "list-final",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         swarm_type: Optional[
             Literal[
                 "reasoning-duo",
@@ -89,15 +89,15 @@ class ReasoningAgentsResource(SyncAPIResource):
                 "AgentJudge",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        system_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        task: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        system_prompt: Optional[str] | Omit = omit,
+        task: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReasoningAgentCreateCompletionResponse:
         """
         Run a reasoning agent with the specified task.
@@ -165,7 +165,7 @@ class ReasoningAgentsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReasoningAgentListTypesResponse:
         """Get the types of reasoning agents available."""
         return self._get(
@@ -200,13 +200,13 @@ class AsyncReasoningAgentsResource(AsyncAPIResource):
     async def create_completion(
         self,
         *,
-        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        max_loops: Optional[int] | NotGiven = NOT_GIVEN,
-        memory_capacity: Optional[int] | NotGiven = NOT_GIVEN,
-        model_name: Optional[str] | NotGiven = NOT_GIVEN,
-        num_knowledge_items: Optional[int] | NotGiven = NOT_GIVEN,
-        num_samples: Optional[int] | NotGiven = NOT_GIVEN,
+        agent_name: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        max_loops: Optional[int] | Omit = omit,
+        memory_capacity: Optional[int] | Omit = omit,
+        model_name: Optional[str] | Omit = omit,
+        num_knowledge_items: Optional[int] | Omit = omit,
+        num_samples: Optional[int] | Omit = omit,
         output_type: Optional[
             Literal[
                 "list",
@@ -227,7 +227,7 @@ class AsyncReasoningAgentsResource(AsyncAPIResource):
                 "list-final",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         swarm_type: Optional[
             Literal[
                 "reasoning-duo",
@@ -241,15 +241,15 @@ class AsyncReasoningAgentsResource(AsyncAPIResource):
                 "AgentJudge",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        system_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        task: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        system_prompt: Optional[str] | Omit = omit,
+        task: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReasoningAgentCreateCompletionResponse:
         """
         Run a reasoning agent with the specified task.
@@ -317,7 +317,7 @@ class AsyncReasoningAgentsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReasoningAgentListTypesResponse:
         """Get the types of reasoning agents available."""
         return await self._get(

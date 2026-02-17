@@ -1,10 +1,8 @@
 from __future__ import annotations
 
-import sys
 import asyncio
 import functools
-import contextvars
-from typing import Any, TypeVar, Callable, Awaitable
+from typing import TypeVar, Callable, Awaitable
 from typing_extensions import ParamSpec
 
 import anyio
@@ -48,7 +46,7 @@ async def to_thread(
     **kwargs: T_ParamSpec.kwargs,
 ) -> T_Retval:
     if sniffio.current_async_library() == "asyncio":
-        return await _asyncio_to_thread(func, *args, **kwargs)
+        return await asyncio.to_thread(func, *args, **kwargs)
 
     return await anyio.to_thread.run_sync(
         functools.partial(func, *args, **kwargs),
@@ -61,10 +59,7 @@ def asyncify(
 ) -> Callable[T_ParamSpec, Awaitable[T_Retval]]:
     """
     Take a blocking function and create an async one that receives the same
-    positional and keyword arguments. For python version 3.9 and above, it uses
-    asyncio.to_thread to run the function in a separate thread. For python version
-    3.8, it uses locally defined copy of the asyncio.to_thread function which was
-    introduced in python 3.9.
+    positional and keyword arguments.
 
     Usage:
 

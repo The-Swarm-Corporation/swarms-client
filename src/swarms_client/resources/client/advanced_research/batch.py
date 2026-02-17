@@ -2,23 +2,23 @@
 
 from __future__ import annotations
 
-from typing import Iterable
+from typing import Iterable, Optional
 
 import httpx
 
-from ..._types import Body, Query, Headers, NotGiven, not_given
-from ..._utils import maybe_transform, async_maybe_transform
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from ...._types import Body, Query, Headers, NotGiven, not_given
+from ...._utils import maybe_transform, async_maybe_transform
+from ...._compat import cached_property
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.swarm_spec_param import SwarmSpecParam
-from ...types.swarms.batch_run_response import BatchRunResponse
+from ...._base_client import make_request_options
+from ....types.client.advanced_research import batch_create_completion_params
+from ....types.client.advanced_research.batch_create_completion_response import BatchCreateCompletionResponse
 
 __all__ = ["BatchResource", "AsyncBatchResource"]
 
@@ -43,21 +43,24 @@ class BatchResource(SyncAPIResource):
         """
         return BatchResourceWithStreamingResponse(self)
 
-    def run(
+    def create_completion(
         self,
         *,
-        body: Iterable[SwarmSpecParam],
+        input_schemas: Optional[Iterable[batch_create_completion_params.InputSchema]],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchRunResponse:
+    ) -> BatchCreateCompletionResponse:
         """
-        Run a batch of swarms with the specified tasks using a thread pool.
+        Execute multiple advanced research sessions concurrently with independent
+        configurations for high-throughput research workflows.
 
         Args:
+          input_schemas: The input schemas for the advanced research
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -67,15 +70,14 @@ class BatchResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/v1/swarm/batch/completions",
-            body=maybe_transform(body, Iterable[SwarmSpecParam]),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
+            "/v1/advanced-research/batch/completions",
+            body=maybe_transform(
+                {"input_schemas": input_schemas}, batch_create_completion_params.BatchCreateCompletionParams
             ),
-            cast_to=BatchRunResponse,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BatchCreateCompletionResponse,
         )
 
 
@@ -99,21 +101,24 @@ class AsyncBatchResource(AsyncAPIResource):
         """
         return AsyncBatchResourceWithStreamingResponse(self)
 
-    async def run(
+    async def create_completion(
         self,
         *,
-        body: Iterable[SwarmSpecParam],
+        input_schemas: Optional[Iterable[batch_create_completion_params.InputSchema]],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BatchRunResponse:
+    ) -> BatchCreateCompletionResponse:
         """
-        Run a batch of swarms with the specified tasks using a thread pool.
+        Execute multiple advanced research sessions concurrently with independent
+        configurations for high-throughput research workflows.
 
         Args:
+          input_schemas: The input schemas for the advanced research
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -123,15 +128,14 @@ class AsyncBatchResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/v1/swarm/batch/completions",
-            body=await async_maybe_transform(body, Iterable[SwarmSpecParam]),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
+            "/v1/advanced-research/batch/completions",
+            body=await async_maybe_transform(
+                {"input_schemas": input_schemas}, batch_create_completion_params.BatchCreateCompletionParams
             ),
-            cast_to=BatchRunResponse,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BatchCreateCompletionResponse,
         )
 
 
@@ -139,8 +143,8 @@ class BatchResourceWithRawResponse:
     def __init__(self, batch: BatchResource) -> None:
         self._batch = batch
 
-        self.run = to_raw_response_wrapper(
-            batch.run,
+        self.create_completion = to_raw_response_wrapper(
+            batch.create_completion,
         )
 
 
@@ -148,8 +152,8 @@ class AsyncBatchResourceWithRawResponse:
     def __init__(self, batch: AsyncBatchResource) -> None:
         self._batch = batch
 
-        self.run = async_to_raw_response_wrapper(
-            batch.run,
+        self.create_completion = async_to_raw_response_wrapper(
+            batch.create_completion,
         )
 
 
@@ -157,8 +161,8 @@ class BatchResourceWithStreamingResponse:
     def __init__(self, batch: BatchResource) -> None:
         self._batch = batch
 
-        self.run = to_streamed_response_wrapper(
-            batch.run,
+        self.create_completion = to_streamed_response_wrapper(
+            batch.create_completion,
         )
 
 
@@ -166,6 +170,6 @@ class AsyncBatchResourceWithStreamingResponse:
     def __init__(self, batch: AsyncBatchResource) -> None:
         self._batch = batch
 
-        self.run = async_to_streamed_response_wrapper(
-            batch.run,
+        self.create_completion = async_to_streamed_response_wrapper(
+            batch.create_completion,
         )

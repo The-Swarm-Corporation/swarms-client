@@ -14,32 +14,32 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.client.rate_get_limits_response import RateGetLimitsResponse
+from ...types.client.tool_list_available_response import ToolListAvailableResponse
 
-__all__ = ["RateResource", "AsyncRateResource"]
+__all__ = ["ToolsResource", "AsyncToolsResource"]
 
 
-class RateResource(SyncAPIResource):
+class ToolsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> RateResourceWithRawResponse:
+    def with_raw_response(self) -> ToolsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/The-Swarm-Corporation/swarms-client#accessing-raw-response-data-eg-headers
         """
-        return RateResourceWithRawResponse(self)
+        return ToolsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> RateResourceWithStreamingResponse:
+    def with_streaming_response(self) -> ToolsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/The-Swarm-Corporation/swarms-client#with_streaming_response
         """
-        return RateResourceWithStreamingResponse(self)
+        return ToolsResourceWithStreamingResponse(self)
 
-    def get_limits(
+    def list_available(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -48,44 +48,41 @@ class RateResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> RateGetLimitsResponse:
+    ) -> ToolListAvailableResponse:
         """
-        Get the rate limits and current usage for the user associated with the provided
-        API key.
+        Retrieve comprehensive information about all available tools and capabilities
+        supported by the Swarms API.
         """
         return self._get(
-            "/v1/rate/limits",
+            "/v1/tools/available",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=RateGetLimitsResponse,
+            cast_to=ToolListAvailableResponse,
         )
 
 
-class AsyncRateResource(AsyncAPIResource):
+class AsyncToolsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncRateResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncToolsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/The-Swarm-Corporation/swarms-client#accessing-raw-response-data-eg-headers
         """
-        return AsyncRateResourceWithRawResponse(self)
+        return AsyncToolsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncRateResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncToolsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/The-Swarm-Corporation/swarms-client#with_streaming_response
         """
-        return AsyncRateResourceWithStreamingResponse(self)
+        return AsyncToolsResourceWithStreamingResponse(self)
 
-    async def get_limits(
+    async def list_available(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -94,54 +91,51 @@ class AsyncRateResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> RateGetLimitsResponse:
+    ) -> ToolListAvailableResponse:
         """
-        Get the rate limits and current usage for the user associated with the provided
-        API key.
+        Retrieve comprehensive information about all available tools and capabilities
+        supported by the Swarms API.
         """
         return await self._get(
-            "/v1/rate/limits",
+            "/v1/tools/available",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=RateGetLimitsResponse,
+            cast_to=ToolListAvailableResponse,
         )
 
 
-class RateResourceWithRawResponse:
-    def __init__(self, rate: RateResource) -> None:
-        self._rate = rate
+class ToolsResourceWithRawResponse:
+    def __init__(self, tools: ToolsResource) -> None:
+        self._tools = tools
 
-        self.get_limits = to_raw_response_wrapper(
-            rate.get_limits,
+        self.list_available = to_raw_response_wrapper(
+            tools.list_available,
         )
 
 
-class AsyncRateResourceWithRawResponse:
-    def __init__(self, rate: AsyncRateResource) -> None:
-        self._rate = rate
+class AsyncToolsResourceWithRawResponse:
+    def __init__(self, tools: AsyncToolsResource) -> None:
+        self._tools = tools
 
-        self.get_limits = async_to_raw_response_wrapper(
-            rate.get_limits,
+        self.list_available = async_to_raw_response_wrapper(
+            tools.list_available,
         )
 
 
-class RateResourceWithStreamingResponse:
-    def __init__(self, rate: RateResource) -> None:
-        self._rate = rate
+class ToolsResourceWithStreamingResponse:
+    def __init__(self, tools: ToolsResource) -> None:
+        self._tools = tools
 
-        self.get_limits = to_streamed_response_wrapper(
-            rate.get_limits,
+        self.list_available = to_streamed_response_wrapper(
+            tools.list_available,
         )
 
 
-class AsyncRateResourceWithStreamingResponse:
-    def __init__(self, rate: AsyncRateResource) -> None:
-        self._rate = rate
+class AsyncToolsResourceWithStreamingResponse:
+    def __init__(self, tools: AsyncToolsResource) -> None:
+        self._tools = tools
 
-        self.get_limits = async_to_streamed_response_wrapper(
-            rate.get_limits,
+        self.list_available = async_to_streamed_response_wrapper(
+            tools.list_available,
         )
