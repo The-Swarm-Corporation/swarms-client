@@ -6,6 +6,8 @@ __all__ = ["BatchedGridWorkflowCompleteWorkflowResponse", "Usage"]
 
 
 class Usage(BaseModel):
+    """The usage of the batched grid workflow."""
+
     cost_per_agent: float
     """The cost in credits for the agents."""
 

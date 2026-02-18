@@ -8,6 +8,17 @@ __all__ = ["AutoSwarmBuilderCreateCompletionResponse"]
 
 
 class AutoSwarmBuilderCreateCompletionResponse(BaseModel):
+    """Schema for the Auto Swarm Builder API response.
+
+    Attributes:
+        success (bool): Whether the swarm was built successfully.
+        job_id (Optional[str]): The job ID of the swarm.
+        outputs (Optional[dict]): The outputs of the auto swarms builder.
+        type (Optional[str]): The type of the swarm execution.
+        timestamp (Optional[str]): The timestamp of the swarm execution.
+        usage (Optional[dict]): The usage statistics of the swarm execution.
+    """
+
     success: bool
     """Whether the swarm was built successfully."""
 

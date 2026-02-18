@@ -31,7 +31,7 @@ class TestAutoSwarmBuilder:
     def test_method_create_completion_with_all_params(self, client: SwarmsClient) -> None:
         auto_swarm_builder = client.client.auto_swarm_builder.create_completion(
             description="description",
-            execution_type=[{}],
+            execution_type="return-agents",
             max_loops=0,
             max_tokens=0,
             model_name="model_name",
@@ -107,7 +107,7 @@ class TestAsyncAutoSwarmBuilder:
     async def test_method_create_completion_with_all_params(self, async_client: AsyncSwarmsClient) -> None:
         auto_swarm_builder = await async_client.client.auto_swarm_builder.create_completion(
             description="description",
-            execution_type=[{}],
+            execution_type="return-agents",
             max_loops=0,
             max_tokens=0,
             model_name="model_name",

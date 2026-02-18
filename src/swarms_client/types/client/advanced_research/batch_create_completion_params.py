@@ -14,6 +14,8 @@ class BatchCreateCompletionParams(TypedDict, total=False):
 
 
 class InputSchemaConfig(TypedDict, total=False):
+    """The configuration for the advanced research"""
+
     description: Optional[str]
     """Description of the advanced research session"""
 

@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import Optional
+from typing_extensions import Literal
 
 import httpx
 
@@ -48,7 +49,8 @@ class AutoSwarmBuilderResource(SyncAPIResource):
         self,
         *,
         description: Optional[str] | Omit = omit,
-        execution_type: Optional[Iterable[object]] | Omit = omit,
+        execution_type: Optional[Literal["return-agents", "return-swarm-router-config", "return-agents-objects"]]
+        | Omit = omit,
         max_loops: Optional[int] | Omit = omit,
         max_tokens: Optional[int] | Omit = omit,
         model_name: Optional[str] | Omit = omit,
@@ -155,7 +157,8 @@ class AsyncAutoSwarmBuilderResource(AsyncAPIResource):
         self,
         *,
         description: Optional[str] | Omit = omit,
-        execution_type: Optional[Iterable[object]] | Omit = omit,
+        execution_type: Optional[Literal["return-agents", "return-swarm-router-config", "return-agents-objects"]]
+        | Omit = omit,
         max_loops: Optional[int] | Omit = omit,
         max_tokens: Optional[int] | Omit = omit,
         model_name: Optional[str] | Omit = omit,

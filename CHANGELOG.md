@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.15.0 (2026-02-17)
+
+Full Changelog: [v0.14.0...v0.15.0](https://github.com/The-Swarm-Corporation/swarms-client/compare/v0.14.0...v0.15.0)
+
+### Features
+
+* **api:** api update ([22b2d3d](https://github.com/The-Swarm-Corporation/swarms-client/commit/22b2d3d94d549e33fe21e5e189676d8a51cfead9))
+* **api:** api update ([73cfc69](https://github.com/The-Swarm-Corporation/swarms-client/commit/73cfc691f1f9e5c42425ee5287161a2cf58e96da))
+
+
+### Bug Fixes
+
+* ensure streams are always closed ([e7c5953](https://github.com/The-Swarm-Corporation/swarms-client/commit/e7c5953e1762aba0e786f1953d5a3acec824605b))
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([c4b01d4](https://github.com/The-Swarm-Corporation/swarms-client/commit/c4b01d48af638629dbd15da37b9603ceb70e0025))
+
+
+### Chores
+
+* add missing docstrings ([e7cc75a](https://github.com/The-Swarm-Corporation/swarms-client/commit/e7cc75a8923b1e79e3b630579ebdad60a022527a))
+* add Python 3.14 classifier and testing ([80cb47b](https://github.com/The-Swarm-Corporation/swarms-client/commit/80cb47b03217742cec108804e33e36ac95dfa3f2))
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([f518e6f](https://github.com/The-Swarm-Corporation/swarms-client/commit/f518e6f29fb610fb43cc0cfb5561259f74577fb5))
+* **docs:** use environment variables for authentication in code snippets ([a75b787](https://github.com/The-Swarm-Corporation/swarms-client/commit/a75b7871a4b16a2b57891b03fe56b6bee6b8679f))
+* **internal:** add missing files argument to base client ([9cfb4f3](https://github.com/The-Swarm-Corporation/swarms-client/commit/9cfb4f3258741be507a239f4299dd15acbe762d9))
+* update lockfile ([3400e3d](https://github.com/The-Swarm-Corporation/swarms-client/commit/3400e3d4e56781814e86e7d8eb247ef76e26858a))
+
 ## 0.14.0 (2026-02-17)
 
 Full Changelog: [v0.13.0...v0.14.0](https://github.com/The-Swarm-Corporation/swarms-client/compare/v0.13.0...v0.14.0)
