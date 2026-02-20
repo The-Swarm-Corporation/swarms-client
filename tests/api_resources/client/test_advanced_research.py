@@ -19,7 +19,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestAdvancedResearch:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_completion(self, client: SwarmsClient) -> None:
         advanced_research = client.client.advanced_research.create_completion(
@@ -28,7 +28,7 @@ class TestAdvancedResearch:
         )
         assert_matches_type(AdvancedResearchCreateCompletionResponse, advanced_research, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_completion_with_all_params(self, client: SwarmsClient) -> None:
         advanced_research = client.client.advanced_research.create_completion(
@@ -49,7 +49,7 @@ class TestAdvancedResearch:
         )
         assert_matches_type(AdvancedResearchCreateCompletionResponse, advanced_research, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_completion(self, client: SwarmsClient) -> None:
         response = client.client.advanced_research.with_raw_response.create_completion(
@@ -62,7 +62,7 @@ class TestAdvancedResearch:
         advanced_research = response.parse()
         assert_matches_type(AdvancedResearchCreateCompletionResponse, advanced_research, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_completion(self, client: SwarmsClient) -> None:
         with client.client.advanced_research.with_streaming_response.create_completion(
@@ -83,7 +83,7 @@ class TestAsyncAdvancedResearch:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_completion(self, async_client: AsyncSwarmsClient) -> None:
         advanced_research = await async_client.client.advanced_research.create_completion(
@@ -92,7 +92,7 @@ class TestAsyncAdvancedResearch:
         )
         assert_matches_type(AdvancedResearchCreateCompletionResponse, advanced_research, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_completion_with_all_params(self, async_client: AsyncSwarmsClient) -> None:
         advanced_research = await async_client.client.advanced_research.create_completion(
@@ -113,7 +113,7 @@ class TestAsyncAdvancedResearch:
         )
         assert_matches_type(AdvancedResearchCreateCompletionResponse, advanced_research, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_completion(self, async_client: AsyncSwarmsClient) -> None:
         response = await async_client.client.advanced_research.with_raw_response.create_completion(
@@ -126,7 +126,7 @@ class TestAsyncAdvancedResearch:
         advanced_research = await response.parse()
         assert_matches_type(AdvancedResearchCreateCompletionResponse, advanced_research, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_completion(self, async_client: AsyncSwarmsClient) -> None:
         async with async_client.client.advanced_research.with_streaming_response.create_completion(

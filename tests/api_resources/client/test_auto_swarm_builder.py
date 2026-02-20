@@ -20,13 +20,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestAutoSwarmBuilder:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_completion(self, client: SwarmsClient) -> None:
         auto_swarm_builder = client.client.auto_swarm_builder.create_completion()
         assert_matches_type(AutoSwarmBuilderCreateCompletionResponse, auto_swarm_builder, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_completion_with_all_params(self, client: SwarmsClient) -> None:
         auto_swarm_builder = client.client.auto_swarm_builder.create_completion(
@@ -40,7 +40,7 @@ class TestAutoSwarmBuilder:
         )
         assert_matches_type(AutoSwarmBuilderCreateCompletionResponse, auto_swarm_builder, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_completion(self, client: SwarmsClient) -> None:
         response = client.client.auto_swarm_builder.with_raw_response.create_completion()
@@ -50,7 +50,7 @@ class TestAutoSwarmBuilder:
         auto_swarm_builder = response.parse()
         assert_matches_type(AutoSwarmBuilderCreateCompletionResponse, auto_swarm_builder, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_completion(self, client: SwarmsClient) -> None:
         with client.client.auto_swarm_builder.with_streaming_response.create_completion() as response:
@@ -62,13 +62,13 @@ class TestAutoSwarmBuilder:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_execution_types(self, client: SwarmsClient) -> None:
         auto_swarm_builder = client.client.auto_swarm_builder.list_execution_types()
         assert_matches_type(AutoSwarmBuilderListExecutionTypesResponse, auto_swarm_builder, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_execution_types(self, client: SwarmsClient) -> None:
         response = client.client.auto_swarm_builder.with_raw_response.list_execution_types()
@@ -78,7 +78,7 @@ class TestAutoSwarmBuilder:
         auto_swarm_builder = response.parse()
         assert_matches_type(AutoSwarmBuilderListExecutionTypesResponse, auto_swarm_builder, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list_execution_types(self, client: SwarmsClient) -> None:
         with client.client.auto_swarm_builder.with_streaming_response.list_execution_types() as response:
@@ -96,13 +96,13 @@ class TestAsyncAutoSwarmBuilder:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_completion(self, async_client: AsyncSwarmsClient) -> None:
         auto_swarm_builder = await async_client.client.auto_swarm_builder.create_completion()
         assert_matches_type(AutoSwarmBuilderCreateCompletionResponse, auto_swarm_builder, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_completion_with_all_params(self, async_client: AsyncSwarmsClient) -> None:
         auto_swarm_builder = await async_client.client.auto_swarm_builder.create_completion(
@@ -116,7 +116,7 @@ class TestAsyncAutoSwarmBuilder:
         )
         assert_matches_type(AutoSwarmBuilderCreateCompletionResponse, auto_swarm_builder, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_completion(self, async_client: AsyncSwarmsClient) -> None:
         response = await async_client.client.auto_swarm_builder.with_raw_response.create_completion()
@@ -126,7 +126,7 @@ class TestAsyncAutoSwarmBuilder:
         auto_swarm_builder = await response.parse()
         assert_matches_type(AutoSwarmBuilderCreateCompletionResponse, auto_swarm_builder, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_completion(self, async_client: AsyncSwarmsClient) -> None:
         async with async_client.client.auto_swarm_builder.with_streaming_response.create_completion() as response:
@@ -138,13 +138,13 @@ class TestAsyncAutoSwarmBuilder:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_execution_types(self, async_client: AsyncSwarmsClient) -> None:
         auto_swarm_builder = await async_client.client.auto_swarm_builder.list_execution_types()
         assert_matches_type(AutoSwarmBuilderListExecutionTypesResponse, auto_swarm_builder, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_execution_types(self, async_client: AsyncSwarmsClient) -> None:
         response = await async_client.client.auto_swarm_builder.with_raw_response.list_execution_types()
@@ -154,7 +154,7 @@ class TestAsyncAutoSwarmBuilder:
         auto_swarm_builder = await response.parse()
         assert_matches_type(AutoSwarmBuilderListExecutionTypesResponse, auto_swarm_builder, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_execution_types(self, async_client: AsyncSwarmsClient) -> None:
         async with async_client.client.auto_swarm_builder.with_streaming_response.list_execution_types() as response:

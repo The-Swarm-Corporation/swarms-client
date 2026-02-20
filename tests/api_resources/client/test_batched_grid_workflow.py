@@ -19,13 +19,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestBatchedGridWorkflow:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_complete_workflow(self, client: SwarmsClient) -> None:
         batched_grid_workflow = client.client.batched_grid_workflow.complete_workflow()
         assert_matches_type(BatchedGridWorkflowCompleteWorkflowResponse, batched_grid_workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_complete_workflow_with_all_params(self, client: SwarmsClient) -> None:
         batched_grid_workflow = client.client.batched_grid_workflow.complete_workflow(
@@ -81,7 +81,7 @@ class TestBatchedGridWorkflow:
         )
         assert_matches_type(BatchedGridWorkflowCompleteWorkflowResponse, batched_grid_workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_complete_workflow(self, client: SwarmsClient) -> None:
         response = client.client.batched_grid_workflow.with_raw_response.complete_workflow()
@@ -91,7 +91,7 @@ class TestBatchedGridWorkflow:
         batched_grid_workflow = response.parse()
         assert_matches_type(BatchedGridWorkflowCompleteWorkflowResponse, batched_grid_workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_complete_workflow(self, client: SwarmsClient) -> None:
         with client.client.batched_grid_workflow.with_streaming_response.complete_workflow() as response:
@@ -109,13 +109,13 @@ class TestAsyncBatchedGridWorkflow:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_complete_workflow(self, async_client: AsyncSwarmsClient) -> None:
         batched_grid_workflow = await async_client.client.batched_grid_workflow.complete_workflow()
         assert_matches_type(BatchedGridWorkflowCompleteWorkflowResponse, batched_grid_workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_complete_workflow_with_all_params(self, async_client: AsyncSwarmsClient) -> None:
         batched_grid_workflow = await async_client.client.batched_grid_workflow.complete_workflow(
@@ -171,7 +171,7 @@ class TestAsyncBatchedGridWorkflow:
         )
         assert_matches_type(BatchedGridWorkflowCompleteWorkflowResponse, batched_grid_workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_complete_workflow(self, async_client: AsyncSwarmsClient) -> None:
         response = await async_client.client.batched_grid_workflow.with_raw_response.complete_workflow()
@@ -181,7 +181,7 @@ class TestAsyncBatchedGridWorkflow:
         batched_grid_workflow = await response.parse()
         assert_matches_type(BatchedGridWorkflowCompleteWorkflowResponse, batched_grid_workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_complete_workflow(self, async_client: AsyncSwarmsClient) -> None:
         async with async_client.client.batched_grid_workflow.with_streaming_response.complete_workflow() as response:

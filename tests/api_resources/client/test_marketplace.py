@@ -17,13 +17,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestMarketplace:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_agent(self, client: SwarmsClient) -> None:
         marketplace = client.client.marketplace.create_agent()
         assert_matches_type(MarketplaceCreateAgentResponse, marketplace, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_agent_with_all_params(self, client: SwarmsClient) -> None:
         marketplace = client.client.marketplace.create_agent(
@@ -31,7 +31,7 @@ class TestMarketplace:
         )
         assert_matches_type(MarketplaceCreateAgentResponse, marketplace, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_agent(self, client: SwarmsClient) -> None:
         response = client.client.marketplace.with_raw_response.create_agent()
@@ -41,7 +41,7 @@ class TestMarketplace:
         marketplace = response.parse()
         assert_matches_type(MarketplaceCreateAgentResponse, marketplace, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_agent(self, client: SwarmsClient) -> None:
         with client.client.marketplace.with_streaming_response.create_agent() as response:
@@ -59,13 +59,13 @@ class TestAsyncMarketplace:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_agent(self, async_client: AsyncSwarmsClient) -> None:
         marketplace = await async_client.client.marketplace.create_agent()
         assert_matches_type(MarketplaceCreateAgentResponse, marketplace, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_agent_with_all_params(self, async_client: AsyncSwarmsClient) -> None:
         marketplace = await async_client.client.marketplace.create_agent(
@@ -73,7 +73,7 @@ class TestAsyncMarketplace:
         )
         assert_matches_type(MarketplaceCreateAgentResponse, marketplace, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_agent(self, async_client: AsyncSwarmsClient) -> None:
         response = await async_client.client.marketplace.with_raw_response.create_agent()
@@ -83,7 +83,7 @@ class TestAsyncMarketplace:
         marketplace = await response.parse()
         assert_matches_type(MarketplaceCreateAgentResponse, marketplace, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_agent(self, async_client: AsyncSwarmsClient) -> None:
         async with async_client.client.marketplace.with_streaming_response.create_agent() as response:

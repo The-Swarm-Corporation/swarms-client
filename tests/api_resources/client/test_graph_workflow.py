@@ -17,13 +17,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestGraphWorkflow:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_execute_workflow(self, client: SwarmsClient) -> None:
         graph_workflow = client.client.graph_workflow.execute_workflow()
         assert_matches_type(GraphWorkflowExecuteWorkflowResponse, graph_workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_execute_workflow_with_all_params(self, client: SwarmsClient) -> None:
         graph_workflow = client.client.graph_workflow.execute_workflow(
@@ -90,7 +90,7 @@ class TestGraphWorkflow:
         )
         assert_matches_type(GraphWorkflowExecuteWorkflowResponse, graph_workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_execute_workflow(self, client: SwarmsClient) -> None:
         response = client.client.graph_workflow.with_raw_response.execute_workflow()
@@ -100,7 +100,7 @@ class TestGraphWorkflow:
         graph_workflow = response.parse()
         assert_matches_type(GraphWorkflowExecuteWorkflowResponse, graph_workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_execute_workflow(self, client: SwarmsClient) -> None:
         with client.client.graph_workflow.with_streaming_response.execute_workflow() as response:
@@ -118,13 +118,13 @@ class TestAsyncGraphWorkflow:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_execute_workflow(self, async_client: AsyncSwarmsClient) -> None:
         graph_workflow = await async_client.client.graph_workflow.execute_workflow()
         assert_matches_type(GraphWorkflowExecuteWorkflowResponse, graph_workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_execute_workflow_with_all_params(self, async_client: AsyncSwarmsClient) -> None:
         graph_workflow = await async_client.client.graph_workflow.execute_workflow(
@@ -191,7 +191,7 @@ class TestAsyncGraphWorkflow:
         )
         assert_matches_type(GraphWorkflowExecuteWorkflowResponse, graph_workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_execute_workflow(self, async_client: AsyncSwarmsClient) -> None:
         response = await async_client.client.graph_workflow.with_raw_response.execute_workflow()
@@ -201,7 +201,7 @@ class TestAsyncGraphWorkflow:
         graph_workflow = await response.parse()
         assert_matches_type(GraphWorkflowExecuteWorkflowResponse, graph_workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_execute_workflow(self, async_client: AsyncSwarmsClient) -> None:
         async with async_client.client.graph_workflow.with_streaming_response.execute_workflow() as response:

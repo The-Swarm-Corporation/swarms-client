@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestBatch:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_completion(self, client: SwarmsClient) -> None:
         batch = client.client.advanced_research.batch.create_completion(
@@ -30,7 +30,7 @@ class TestBatch:
         )
         assert_matches_type(BatchCreateCompletionResponse, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_completion(self, client: SwarmsClient) -> None:
         response = client.client.advanced_research.batch.with_raw_response.create_completion(
@@ -47,7 +47,7 @@ class TestBatch:
         batch = response.parse()
         assert_matches_type(BatchCreateCompletionResponse, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_completion(self, client: SwarmsClient) -> None:
         with client.client.advanced_research.batch.with_streaming_response.create_completion(
@@ -72,7 +72,7 @@ class TestAsyncBatch:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_completion(self, async_client: AsyncSwarmsClient) -> None:
         batch = await async_client.client.advanced_research.batch.create_completion(
@@ -85,7 +85,7 @@ class TestAsyncBatch:
         )
         assert_matches_type(BatchCreateCompletionResponse, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_completion(self, async_client: AsyncSwarmsClient) -> None:
         response = await async_client.client.advanced_research.batch.with_raw_response.create_completion(
@@ -102,7 +102,7 @@ class TestAsyncBatch:
         batch = await response.parse()
         assert_matches_type(BatchCreateCompletionResponse, batch, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_completion(self, async_client: AsyncSwarmsClient) -> None:
         async with async_client.client.advanced_research.batch.with_streaming_response.create_completion(
