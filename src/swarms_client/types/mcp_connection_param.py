@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
-from typing_extensions import TypeAlias, TypedDict
+from typing import Dict, Optional
+from typing_extensions import TypedDict
 
 __all__ = ["McpConnectionParam"]
 
 
-class McpConnectionParamTyped(TypedDict, total=False):
+class McpConnectionParam(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     authorization_token: Optional[str]
     """Authentication token for accessing the MCP server"""
 
@@ -29,6 +29,3 @@ class McpConnectionParamTyped(TypedDict, total=False):
 
     url: Optional[str]
     """The URL endpoint for the MCP server"""
-
-
-McpConnectionParam: TypeAlias = Union[McpConnectionParamTyped, Dict[str, object]]
